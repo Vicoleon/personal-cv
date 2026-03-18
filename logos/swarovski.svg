@@ -1,16 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="white"/>
-  <!-- Swarovski swan silhouette — simplified geometric swan -->
-  <g transform="translate(50,52) scale(1.1)">
-    <!-- Body -->
-    <ellipse cx="2" cy="8" rx="16" ry="9" fill="#1A1A1A"/>
-    <!-- Neck curve -->
-    <path d="M-4,-2 Q-16,-18 -10,-28 Q-5,-34 0,-30 Q-4,-22 -2,-10 Z" fill="#1A1A1A"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 200">
+  <rect width="280" height="200" fill="white"/>
+
+  <!-- ── SWAN BODY & NECK ── -->
+  <g fill="#1A1A1A">
+    <!-- Body (large teardrop/oval, tilted) -->
+    <ellipse cx="100" cy="118" rx="46" ry="28" transform="rotate(-15 100 118)"/>
+    <!-- Neck (curved path filled) -->
+    <path d="M72,100 Q52,72 58,48 Q62,34 72,30 Q80,28 82,36
+             Q76,42 75,54 Q74,68 86,88 Z"/>
     <!-- Head -->
-    <ellipse cx="-8" cy="-30" rx="5" ry="4" fill="#1A1A1A"/>
+    <ellipse cx="74" cy="26" rx="12" ry="10" transform="rotate(-10 74 26)"/>
     <!-- Beak -->
-    <path d="M-12,-29 L-20,-28 L-12,-27 Z" fill="#1A1A1A"/>
-    <!-- Wing highlight -->
-    <path d="M6,2 Q18,-4 16,6 Q10,10 2,14" stroke="white" stroke-width="1.5" fill="none"/>
+    <path d="M64,24 L46,22 L64,28 Z"/>
+    <!-- Crystal gem on forehead -->
+    <path d="M80,20 L84,16 L88,20 L84,24 Z" fill="#555"/>
   </g>
+
+  <!-- ── CRYSTAL/DOT WING (dissolving rightward) ── -->
+  <!-- Row 1 — dense, large dots near body -->
+  <circle cx="136" cy="88" r="6.5" fill="#1A1A1A"/>
+  <circle cx="152" cy="80" r="6.0" fill="#1A1A1A"/>
+  <circle cx="168" cy="73" r="5.5" fill="#1A1A1A"/>
+  <circle cx="183" cy="67" r="5.0" fill="#1A1A1A"/>
+  <circle cx="197" cy="62" r="4.5" fill="#1A1A1A"/>
+  <circle cx="210" cy="58" r="4.0" fill="#1A1A1A"/>
+  <circle cx="222" cy="55" r="3.5" fill="#333"/>
+  <circle cx="233" cy="53" r="3.0" fill="#444"/>
+  <circle cx="243" cy="52" r="2.5" fill="#555"/>
+  <circle cx="252" cy="51" r="2.0" fill="#666"/>
+  <circle cx="260" cy="51" r="1.5" fill="#777"/>
+
+  <!-- Row 2 — slightly below row 1 -->
+  <circle cx="140" cy="100" r="6.0" fill="#1A1A1A"/>
+  <circle cx="155" cy="94" r="5.5" fill="#1A1A1A"/>
+  <circle cx="170" cy="88" r="5.0" fill="#1A1A1A"/>
+  <circle cx="184" cy="83" r="4.5" fill="#1A1A1A"/>
+  <circle cx="197" cy="79" r="4.0" fill="#333"/>
+  <circle cx="209" cy="76" r="3.5" fill="#444"/>
+  <circle cx="220" cy="73" r="3.0" fill="#555"/>
+  <circle cx="230" cy="71" r="2.5" fill="#666"/>
+  <circle cx="239" cy="70" r="2.0" fill="#777"/>
+  <circle cx="247" cy="69" r="1.5" fill="#888"/>
+
+  <!-- Row 3 — below row 2 -->
+  <circle cx="143" cy="112" r="5.5" fill="#1A1A1A"/>
+  <circle cx="157" cy="108" r="5.0" fill="#1A1A1A"/>
+  <circle cx="171" cy="104" r="4.5" fill="#333"/>
+  <circle cx="184" cy="100" r="4.0" fill="#444"/>
+  <circle cx="196" cy="97" r="3.5" fill="#555"/>
+  <circle cx="207" cy="95" r="3.0" fill="#666"/>
+  <circle cx="217" cy="93" r="2.5" fill="#777"/>
+  <circle cx="226" cy="92" r="2.0" fill="#888"/>
+
+  <!-- Row 4 — sparse, tapering off -->
+  <circle cx="145" cy="124" r="4.5" fill="#333"/>
+  <circle cx="158" cy="121" r="4.0" fill="#444"/>
+  <circle cx="170" cy="119" r="3.5" fill="#555"/>
+  <circle cx="181" cy="117" r="3.0" fill="#666"/>
+  <circle cx="191" cy="116" r="2.5" fill="#777"/>
+  <circle cx="200" cy="115" r="2.0" fill="#888"/>
+
+  <!-- ── SWAROVSKI WORDMARK ── -->
+  <text x="140" y="178" text-anchor="middle"
+        font-family="Times New Roman,Georgia,serif"
+        font-size="22" font-weight="400" letter-spacing="5"
+        fill="#1A1A1A">SWAROVSKI</text>
 </svg>
