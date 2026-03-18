@@ -1351,10 +1351,10 @@
   </div>
   <div class="chat-messages" id="chatMessages">
     <div class="chat-quote" data-i18n="profile_quote">"I build the systems that turn data into decisions — from pipeline to dashboard to production AI agent. If you need someone who can architect it, code it, and ship it, I am ready to talk." - Jose</div>
-    <div class="chat-msg assistant" data-i18n="chat_welcome">Hi! 👋 I'm Jose's AI assistant. Ask me anything about his experience, skills, or background and I'll answer based on his resume.</div>
+    <div class="chat-msg assistant" data-i18n="chat_welcome">Hi! 👋 I'm Jose's AI assistant. Ask me about his experience, or **if he's a good fit for a specific role** you're hiring for!</div>
   </div>
   <div class="chat-input-area">
-    <input class="chat-input" id="chatInput" type="text" data-i18n-placeholder="chat_placeholder" placeholder="e.g. What AI projects has Jose led?" onkeydown="if(event.key==='Enter')sendMessage()" />
+    <input class="chat-input" id="chatInput" type="text" data-i18n-placeholder="chat_placeholder" placeholder="e.g. Is Jose a good fit for a Sr. Data Engineer role?" onkeydown="if(event.key==='Enter')sendMessage()" />
     <button class="chat-send" id="chatSend" onclick="sendMessage()" aria-label="Send">
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
@@ -1471,8 +1471,8 @@
       profile_quote: '"Construyo los sistemas que convierten datos en decisiones — desde pipelines hasta dashboards y agentes de IA en producción. Si necesitas a alguien que pueda diseñarlo, programarlo y desplegarlo, estoy listo para hablar." - Jose',
       cta_talk: 'Hablemos',
       chat_title: 'Pregunta sobre la experiencia de Jose',
-      chat_welcome: '¡Hola! 👋 Soy el asistente de IA de Jose. Pregúntame lo que quieras sobre su experiencia, habilidades o formación y te responderé basado en su currículum.',
-      chat_placeholder: 'ej. ¿Qué proyectos de IA ha liderado Jose?',
+      chat_welcome: '¡Hola! 👋 Soy el asistente de IA de Jose. Pregúntame sobre su experiencia, o **si es el candidato ideal para un rol específico** que estés buscando.',
+      chat_placeholder: 'ej. ¿Es Jose un buen fit para un rol de Sr. Data Engineer?',
     }
   };
 
@@ -1609,6 +1609,7 @@ Rules:
 3. If someone asks something unrelated to Jose or his experience, politely decline and redirect: "I can only help with questions about Jose's professional background. What would you like to know about his experience?"
 4. Use specific details from the resume when answering (company names, dates, achievements).
 5. Keep responses brief — 2-4 sentences max unless a detailed answer is warranted.
+ Rule 7: Role Fit Analysis. If a user asks if Jose is a good fit for a specific role or company, analyze his resume context against the requirements mentioned. Highlight strengths and potential areas of excellence. Be honest but focus on his relevant experience.
 6. You may format your responses using bold text with **text** for emphasis.
 
 Resume Context:
