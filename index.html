@@ -611,7 +611,7 @@
       right: calc( max(32px + 382px, (100vw - 1450px)/2 + 32px + 382px) - 174px); /* centered above FAB, assuming drawer is 400px wide, 400/2 - 52/2 = 174px */
       z-index: 9997;
       width: 380px;
-      max-height: 520px;
+      height: 85vh; /* Direct height without max-height cap */
       display: flex;
       flex-direction: column;
       background: var(--bg);
@@ -671,15 +671,14 @@
     .chat-messages {
       flex: 1;
       overflow-y: auto;
-      padding: 16px;
+      padding: 16px 16px 32px; /* Increased bottom padding */
       display: flex;
       flex-direction: column;
       gap: 12px;
-      min-height: 200px;
-      max-height: 340px;
+      min-height: 250px;
     }
-    .chat-messages::-webkit-scrollbar { width: 3px; }
-    .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .chat-messages::-webkit-scrollbar { width: 6px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
     .chat-msg {
       max-width: 85%;
@@ -731,6 +730,16 @@
     @keyframes typingBounce {
       0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
       30% { transform: translateY(-6px); opacity: 1; }
+    }
+    
+    .chat-quote {
+      font-size: 0.72rem;
+      line-height: 1.5;
+      color: var(--text3);
+      font-style: italic;
+      padding: 0 4px 12px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 4px;
     }
 
     .chat-input-area {
@@ -1351,7 +1360,7 @@
   </div>
   <div class="chat-messages" id="chatMessages">
     <div class="chat-quote" data-i18n="profile_quote">"I build the systems that turn data into decisions — from pipeline to dashboard to production AI agent. If you need someone who can architect it, code it, and ship it, I am ready to talk." - Jose</div>
-    <div class="chat-msg assistant" data-i18n="chat_welcome">Hi! 👋 I'm Jose's AI assistant. Ask me about his experience, or **if he's a good fit for a specific role** you're hiring for!</div>
+    <div class="chat-msg assistant" data-i18n="chat_welcome">Hi! 👋 I'm Jose's AI assistant. Ask me about his experience, or if he's a good fit for a specific role you're hiring for!</div>
   </div>
   <div class="chat-input-area">
     <input class="chat-input" id="chatInput" type="text" data-i18n-placeholder="chat_placeholder" placeholder="e.g. Is Jose a good fit for a Sr. Data Engineer role?" onkeydown="if(event.key==='Enter')sendMessage()" />
@@ -1471,7 +1480,7 @@
       profile_quote: '"Construyo los sistemas que convierten datos en decisiones — desde pipelines hasta dashboards y agentes de IA en producción. Si necesitas a alguien que pueda diseñarlo, programarlo y desplegarlo, estoy listo para hablar." - Jose',
       cta_talk: 'Hablemos',
       chat_title: 'Pregunta sobre la experiencia de Jose',
-      chat_welcome: '¡Hola! 👋 Soy el asistente de IA de Jose. Pregúntame sobre su experiencia, o **si es el candidato ideal para un rol específico** que estés buscando.',
+      chat_welcome: '¡Hola! 👋 Soy el asistente de IA de Jose. Pregúntame sobre su experiencia, o si es el candidato ideal para un rol específico que estés buscando.',
       chat_placeholder: 'ej. ¿Es Jose un buen fit para un rol de Sr. Data Engineer?',
     }
   };
@@ -1601,19 +1610,21 @@ PROFILE:
 "I build the systems that turn data into decisions — from pipeline to dashboard to production AI agent. If you need someone who can architect it, code it, and ship it, I am ready to talk." Jose
 `;
 
-  const SYSTEM_PROMPT = `You are Jose Leon Salgado's personal AI assistant on his CV website. Your sole purpose is to answer questions about Jose's professional experience, skills, education, and background using ONLY the information provided in his resume context below.
+  const SYSTEM_PROMPT = `You are the Expert Recruiter & AI Assistant for Jose Leon Salgado.
+Your mission is to represent Jose professionally and persuasively to potential employers.
 
-Rules:
-1. ONLY answer based on the resume context provided. Do not make up or infer information not present.
-2. Be friendly, professional, and concise.
-3. If someone asks something unrelated to Jose or his experience, politely decline and redirect: "I can only help with questions about Jose's professional background. What would you like to know about his experience?"
-4. Use specific details from the resume when answering (company names, dates, achievements).
-5. Keep responses brief — 2-4 sentences max unless a detailed answer is warranted.
- Rule 7: Role Fit Analysis. If a user asks if Jose is a good fit for a specific role or company, analyze his resume context against the requirements mentioned. Highlight strengths and potential areas of excellence. Be honest but focus on his relevant experience.
-6. You may format your responses using bold text with **text** for emphasis.
+RESUME CONTEXT:
+${JOSE_RESUME_CONTEXT}
 
-Resume Context:
-${JOSE_RESUME_CONTEXT}`;
+MISSION RULES:
+1. RESPONSE STYLE: Be elite, persuasive, and professional. Act as Jose's advocate.
+2. ROLE FIT ANALYSIS: When asked if Jose is a match for a role, provide a thorough, point-by-point comparison. 
+   - Directly link his achievements (BCG, RubikSoft, Latchel, etc.) to the job requirements.
+   - Use confident language. Sell his value proposition: transforming raw data into decision systems.
+3. COMPLETENESS: Always provide a full, logical conclusion. Do NOT stop mid-sentence.
+4. SOURCE CONTROL: Use ONLY the provided resume context.
+5. FORMATTING: Use **bold text** for emphasis and bullet points for lists.
+6. CONSTRAINTS: Politeley decline questions unrelated to Jose's career.`;
 
   let chatHistory = [];
 
@@ -1648,7 +1659,7 @@ ${JOSE_RESUME_CONTEXT}`;
             contents: chatHistory,
             generationConfig: {
               temperature: 0.4,
-              maxOutputTokens: 400,
+              maxOutputTokens: 1024,
             }
           })
         }
@@ -1658,6 +1669,7 @@ ${JOSE_RESUME_CONTEXT}`;
       const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text
         || "Sorry, I couldn't process that. Please try again.";
 
+      console.log("AI Response:", reply); // Debug: check if text is truncated here
       chatHistory.push({ role: 'model', parts: [{ text: reply }] });
       const typingEl = document.getElementById('typingIndicator');
       if (typingEl) typingEl.remove();
