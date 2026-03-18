@@ -375,6 +375,406 @@
     .profile-box .sec-label { color: var(--teal); margin-bottom: 8px; }
     .profile-box p { font-size: 0.78rem; line-height: 1.78; color: var(--text2); font-style: italic; }
 
+    /* ══════════ VIBRANT THEME ══════════ */
+    [data-theme="vibrant"] {
+      --bg:       #0F0F1A;
+      --sidebar:  #161628;
+      --card:     #1E1E36;
+      --card-hov: #2A2A50;
+      --border:   rgba(139,92,246,0.25);
+      --blue:     #8B5CF6;
+      --blue-bg:  rgba(139,92,246,0.12);
+      --teal:     #06B6D4;
+      --teal-bg:  rgba(6,182,212,0.12);
+      --text:     #F1F5F9;
+      --text2:    #CBD5E1;
+      --text3:    #64748B;
+    }
+    [data-theme="vibrant"] .sidebar,
+    [data-theme="vibrant"] .skills-panel { background: var(--sidebar); }
+    [data-theme="vibrant"] .job-card { background: var(--card); }
+    [data-theme="vibrant"] .job-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 0 18px rgba(139,92,246,0.25), 0 0 40px rgba(139,92,246,0.08);
+    }
+    [data-theme="vibrant"] .sk { background: var(--card); }
+    [data-theme="vibrant"] .sk:hover { background: var(--blue-bg); border-color: rgba(139,92,246,0.5); }
+    [data-theme="vibrant"] .skill-cat { background: var(--card); }
+    [data-theme="vibrant"] .co-circle { background: var(--card); }
+    [data-theme="vibrant"] .co-badge { background: var(--card); border-color: var(--border); }
+    [data-theme="vibrant"] .co-badge .b-init { background: var(--card); color: var(--text2); }
+    [data-theme="vibrant"] .heading-bar {
+      background: linear-gradient(90deg, #8B5CF6, #06B6D4);
+    }
+    [data-theme="vibrant"] .lang-fill {
+      background: linear-gradient(90deg, #8B5CF6, #06B6D4);
+    }
+    [data-theme="vibrant"] .era-pill {
+      color: #A78BFA;
+      border-color: rgba(139,92,246,0.35);
+      background: rgba(139,92,246,0.12);
+    }
+    [data-theme="vibrant"] .tl-dot {
+      background: #8B5CF6; box-shadow: 0 0 0 1.5px #8B5CF6, 0 0 8px rgba(139,92,246,0.5);
+    }
+    [data-theme="vibrant"] .tl-dot.t {
+      background: #06B6D4; box-shadow: 0 0 0 1.5px #06B6D4, 0 0 8px rgba(6,182,212,0.5);
+    }
+    [data-theme="vibrant"] .profile-popup-card {
+      background: rgba(22,22,40,0.85);
+      border-color: rgba(139,92,246,0.3);
+    }
+    /* Vibrant background grid effect */
+    [data-theme="vibrant"] body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(139,92,246,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(6,182,212,0.06) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    [data-theme="vibrant"] .cv { position: relative; z-index: 1; }
+
+    /* ══════════ THEME TOGGLE ══════════ */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 5px 14px 5px 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .theme-toggle:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      transform: translateY(-1px);
+    }
+    .theme-toggle .toggle-track {
+      width: 38px; height: 20px;
+      border-radius: 10px;
+      background: var(--border);
+      position: relative;
+      transition: background 0.3s;
+    }
+    .theme-toggle .toggle-thumb {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--teal);
+      position: absolute;
+      top: 2px; left: 2px;
+      transition: transform 0.3s cubic-bezier(.4,0,.2,1), background 0.3s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+    [data-theme="vibrant"] .theme-toggle .toggle-thumb {
+      transform: translateX(18px);
+      background: #8B5CF6;
+      box-shadow: 0 0 8px rgba(139,92,246,0.5);
+    }
+    [data-theme="vibrant"] .theme-toggle .toggle-track {
+      background: rgba(139,92,246,0.3);
+    }
+    .theme-toggle .toggle-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text3);
+      transition: color 0.3s;
+    }
+    .theme-toggle .toggle-icon {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    /* ══════════ FLOATING PROFILE POPUP ══════════ */
+    .float-btn {
+      position: fixed;
+      bottom: 28px;
+      right: calc( max(32px + 270px, (100vw - 1450px)/2 + 32px + 270px) );
+      z-index: 9998;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(45,106,106,0.35);
+      transition: all 0.3s cubic-bezier(.4,0,.2,1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .float-btn:hover {
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 6px 28px rgba(45,106,106,0.45);
+    }
+    .float-btn.active {
+      transform: rotate(45deg) scale(1.1);
+    }
+    [data-theme="vibrant"] .float-btn {
+      background: linear-gradient(135deg, #8B5CF6, #06B6D4);
+      box-shadow: 0 4px 20px rgba(139,92,246,0.4), 0 0 30px rgba(139,92,246,0.15);
+    }
+    /* pulse ring */
+    .float-btn::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid var(--teal);
+      opacity: 0;
+      animation: pulse-ring 2.5s ease-out infinite;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    [data-theme="vibrant"] .float-btn::before { border-color: #8B5CF6; }
+
+    .profile-popup {
+      position: fixed;
+      bottom: 92px;
+      right: 28px;
+      z-index: 9997;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(.4,0,.2,1);
+    }
+    .profile-popup.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .profile-popup-card {
+      width: 320px;
+      background: rgba(240,244,248,0.85);
+      backdrop-filter: blur(20px) saturate(1.6);
+      -webkit-backdrop-filter: blur(20px) saturate(1.6);
+      border: 1px solid rgba(226,232,240,0.6);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(255,255,255,0.1) inset;
+    }
+    .profile-popup-card .sec-label {
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .profile-popup-card .profile-quote {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: var(--text2);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+    .profile-popup-card .profile-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      padding: 8px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 2px 10px rgba(45,106,106,0.3);
+    }
+    .profile-popup-card .profile-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(45,106,106,0.4);
+    }
+    [data-theme="vibrant"] .profile-popup-card .profile-cta {
+      background: linear-gradient(135deg, #8B5CF6, #06B6D4);
+      box-shadow: 0 2px 10px rgba(139,92,246,0.4);
+    }
+
+
+    /* ══════════ AI CHATBOT ══════════ */
+
+    .chat-drawer {
+      position: fixed;
+      bottom: 92px;
+      right: calc( max(32px + 382px, (100vw - 1450px)/2 + 32px + 382px) - 174px); /* centered above FAB, assuming drawer is 400px wide, 400/2 - 52/2 = 174px */
+      z-index: 9997;
+      width: 380px;
+      max-height: 520px;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(.4,0,.2,1);
+      overflow: hidden;
+    }
+    .chat-drawer.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    [data-theme="vibrant"] .chat-drawer {
+      background: rgba(15,15,26,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-color: rgba(139,92,246,0.25);
+    }
+
+    .chat-header {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .chat-header-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22C55E;
+      box-shadow: 0 0 6px rgba(34,197,94,0.4);
+    }
+    .chat-header-title {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      flex: 1;
+    }
+    .chat-header-close {
+      background: none;
+      border: none;
+      color: var(--text3);
+      cursor: pointer;
+      font-size: 18px;
+      padding: 0;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .chat-header-close:hover { color: var(--text); }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 200px;
+      max-height: 340px;
+    }
+    .chat-messages::-webkit-scrollbar { width: 3px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .chat-msg {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      line-height: 1.65;
+      animation: msgIn 0.3s ease-out;
+    }
+    @keyframes msgIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .chat-msg.assistant {
+      align-self: flex-start;
+      background: var(--card);
+      color: var(--text2);
+      border-bottom-left-radius: 4px;
+    }
+    .chat-msg.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    [data-theme="vibrant"] .chat-msg.user {
+      background: linear-gradient(135deg, #8B5CF6, #06B6D4);
+    }
+    .chat-msg.assistant strong { color: var(--text); }
+
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 10px 14px;
+      align-self: flex-start;
+      background: var(--card);
+      border-radius: 12px;
+      border-bottom-left-radius: 4px;
+    }
+    .typing-indicator span {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--text3);
+      animation: typingBounce 1.4s ease-in-out infinite;
+    }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingBounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-6px); opacity: 1; }
+    }
+
+    .chat-input-area {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .chat-input {
+      flex: 1;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--card);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .chat-input::placeholder { color: var(--text3); }
+    .chat-input:focus { border-color: var(--blue); }
+    [data-theme="vibrant"] .chat-input:focus { border-color: #8B5CF6; }
+
+    .chat-send {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .chat-send:hover { transform: scale(1.05); }
+    .chat-send:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    [data-theme="vibrant"] .chat-send {
+      background: linear-gradient(135deg, #8B5CF6, #06B6D4);
+    }
+
     /* ══════════ RESPONSIVE ══════════ */
     @media (max-width: 1080px) { .cv { grid-template-columns: 210px 1fr 248px; } }
     @media (max-width: 860px) {
@@ -386,6 +786,60 @@
       .timeline { grid-template-columns: 1fr; }
       .tl-center { display: none; }
       .tl-left, .tl-right { padding: 0; }
+      .chat-drawer { width: calc(100vw - 24px); right: 12px; bottom: 86px; }
+      .profile-popup { right: 12px; bottom: 86px; }
+      .profile-popup-card { width: calc(100vw - 24px); }
+      .float-btn { bottom: 20px; right: 20px; }
+    }
+
+    /* ══════════ LANGUAGE TOGGLE ══════════ */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .lang-toggle:hover {
+      border-color: var(--blue);
+    }
+    .lang-toggle .lang-flag {
+      font-size: 16px;
+      line-height: 1;
+    }
+    .lang-toggle .lang-track {
+      width: 32px; height: 16px;
+      border-radius: 8px;
+      background: var(--border);
+      position: relative;
+      transition: background 0.3s;
+      flex-shrink: 0;
+    }
+    .lang-toggle .lang-thumb {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--teal);
+      position: absolute;
+      top: 2px; left: 2px;
+      transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    [data-lang="es"] .lang-toggle .lang-thumb {
+      transform: translateX(16px);
+    }
+    .lang-toggle .lang-code {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text3);
+      min-width: 18px;
     }
   </style>
 </head>
@@ -397,16 +851,23 @@
 
   <div class="name-block">
     <h1>Jose Leon<br>Salgado</h1>
-    <div class="role">Data &amp; AI Engineer &nbsp;·&nbsp; BI Architect</div>
+    <div class="role" data-i18n="role">Data &amp; AI Engineer &nbsp;·&nbsp; BI Architect</div>
+    <div style="margin-top:12px">
+      <div class="lang-toggle" id="langToggle" onclick="toggleLang()">
+        <span class="lang-flag" id="langFlag">🇺🇸</span>
+        <div class="lang-track"><div class="lang-thumb"></div></div>
+        <span class="lang-code" id="langCode">EN</span>
+      </div>
+    </div>
   </div>
 
   <div>
-    <div class="sec-label">Summary</div>
-    <p>12+ years turning raw data into decision systems. From ELT pipelines and data warehouses to production AI agents deployed at BCG, Latchel, Experian, Swarovski, and Walmart.</p>
+    <div class="sec-label" data-i18n="sec_summary">Summary</div>
+    <p data-i18n="summary">12+ years turning raw data into decision systems. From ELT pipelines and data warehouses to production AI agents deployed at BCG, Latchel, Experian, Swarovski, and Walmart.</p>
   </div>
 
   <div>
-    <div class="sec-label">Contact</div>
+    <div class="sec-label" data-i18n="sec_contact">Contact</div>
     <ul class="contact-list">
       <li>
         <svg class="ci" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
@@ -428,33 +889,33 @@
   </div>
 
   <div>
-    <div class="sec-label">Languages</div>
+    <div class="sec-label" data-i18n="sec_languages">Languages</div>
     <div class="lang">
-      <div class="lang-top"><span>English</span><span class="lang-lv">C2</span></div>
+      <div class="lang-top"><span data-i18n="lang_en">English</span><span class="lang-lv">C2</span></div>
       <div class="lang-bar"><div class="lang-fill" style="width:96%"></div></div>
     </div>
     <div class="lang">
-      <div class="lang-top"><span>Spanish</span><span class="lang-lv">Native</span></div>
+      <div class="lang-top"><span data-i18n="lang_es">Spanish</span><span class="lang-lv" data-i18n="lang_native">Native</span></div>
       <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
     </div>
     <div class="lang">
-      <div class="lang-top"><span>Portuguese</span><span class="lang-lv">B2</span></div>
+      <div class="lang-top"><span data-i18n="lang_pt">Portuguese</span><span class="lang-lv">B2</span></div>
       <div class="lang-bar"><div class="lang-fill" style="width:68%"></div></div>
     </div>
   </div>
 
   <div>
-    <div class="sec-label">Education</div>
+    <div class="sec-label" data-i18n="sec_education">Education</div>
     <div class="edu">
-      <div class="edu-deg">Software Engineering</div>
-      <div class="edu-sch">Universidad Técnica Nacional · Ongoing</div>
+      <div class="edu-deg" data-i18n="edu1_deg">Software Engineering</div>
+      <div class="edu-sch" data-i18n="edu1_sch">Universidad Técnica Nacional · Ongoing</div>
     </div>
     <div class="edu">
-      <div class="edu-deg">Conversational English — C1/C2</div>
+      <div class="edu-deg" data-i18n="edu2_deg">Conversational English — C1/C2</div>
       <div class="edu-sch">IPAI · 2001</div>
     </div>
     <div class="edu">
-      <div class="edu-deg">High School Diploma</div>
+      <div class="edu-deg" data-i18n="edu3_deg">High School Diploma</div>
       <div class="edu-sch">Colegio Manuel Benavides R. · 1998</div>
     </div>
   </div>
@@ -464,7 +925,17 @@
 <!-- ════════════════ EXPERIENCE ════════════════ -->
 <main class="experience">
 
-  <h2 class="page-heading">Experience</h2>
+  <div class="exp-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+    <h2 class="page-heading" data-i18n="sec_experience" style="margin-bottom: 0;">Experience</h2>
+    <!-- ══════════ THEME TOGGLE ══════════ -->
+    <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+      <span class="toggle-icon" id="themeIcon">☀️</span>
+      <div class="toggle-track">
+        <div class="toggle-thumb"></div>
+      </div>
+      <span class="toggle-label" id="themeLabel">Professional</span>
+    </div>
+  </div>
   <div class="heading-bar"></div>
 
   <div class="timeline">
@@ -472,7 +943,7 @@
     <!-- ── ERA 1 ── -->
     <div class="era">
       <div class="era-line"></div>
-      <div class="era-pill">2025 · Present</div>
+      <div class="era-pill" data-i18n="era1">2025 · Present</div>
       <div class="era-line"></div>
     </div>
 
@@ -488,15 +959,15 @@
               <span class="co-name">RubikSoft</span>
               <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </div>
-            <div class="job-title">Founder &amp; Principal</div>
-            <div class="job-date">Jan 2025 – Present</div>
+            <div class="job-title" data-i18n="rs_title">Founder &amp; Principal</div>
+            <div class="job-date" data-i18n="rs_date">Jan 2025 – Present</div>
           </div>
         </div>
         <div class="job-body"><div class="job-body-inner"><ul>
-          <li>Designed and launched production-ready AI agents for data maintenance and automation at scale.</li>
-          <li>Built the full agent infrastructure including admin tooling, monitoring, and deployment pipelines.</li>
-          <li>Architected ELT pipelines covering ingestion, transformation, and system update flows.</li>
-          <li>Delivered end-to-end solutions: lead qualification, AI orchestration, and process automation.</li>
+          <li data-i18n="rs_b1">Designed and launched production-ready AI agents for data maintenance and automation at scale.</li>
+          <li data-i18n="rs_b2">Built the full agent infrastructure including admin tooling, monitoring, and deployment pipelines.</li>
+          <li data-i18n="rs_b3">Architected ELT pipelines covering ingestion, transformation, and system update flows.</li>
+          <li data-i18n="rs_b4">Delivered end-to-end solutions: lead qualification, AI orchestration, and process automation.</li>
         </ul></div></div>
       </div>
     </div>
@@ -527,16 +998,16 @@
               <span class="co-name">BCG</span>
               <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </div>
-            <div class="job-title">Product Manager — AskBCG / Findability</div>
-            <div class="job-date">Sep 2025 – Jan 2026</div>
+            <div class="job-title" data-i18n="bcg_title">Product Manager — AskBCG / Findability</div>
+            <div class="job-date" data-i18n="bcg_date">Sep 2025 – Jan 2026</div>
           </div>
         </div>
         <div class="job-body"><div class="job-body-inner"><ul>
-          <li>Drove the launch of an AI-powered policy Q&amp;A tool to preserve and surface institutional knowledge.</li>
-          <li>Defined the North Star KPI system and measurement framework for the product.</li>
-          <li>Established OKRs to align stakeholders and drive adoption across practice areas.</li>
-          <li>Built a human-in-the-loop validation model for quality assurance on generated answers.</li>
-          <li>Drove office and cohort personalisation rules to improve content relevance.</li>
+          <li data-i18n="bcg_b1">Drove the launch of an AI-powered policy Q&amp;A tool to preserve and surface institutional knowledge.</li>
+          <li data-i18n="bcg_b2">Defined the North Star KPI system and measurement framework for the product.</li>
+          <li data-i18n="bcg_b3">Established OKRs to align stakeholders and drive adoption across practice areas.</li>
+          <li data-i18n="bcg_b4">Built a human-in-the-loop validation model for quality assurance on generated answers.</li>
+          <li data-i18n="bcg_b5">Drove office and cohort personalisation rules to improve content relevance.</li>
         </ul></div></div>
       </div>
     </div>
@@ -544,7 +1015,7 @@
     <!-- ── ERA 2 ── -->
     <div class="era">
       <div class="era-line"></div>
-      <div class="era-pill">2022 · 2025</div>
+      <div class="era-pill">2022 · 2025</div><!-- no i18n needed, numbers -->
       <div class="era-line"></div>
     </div>
 
@@ -560,14 +1031,14 @@
               <span class="co-name">Greenslate</span>
               <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </div>
-            <div class="job-title">ETL &amp; Analytics Designer II</div>
-            <div class="job-date">Feb 2024 – Aug 2025</div>
+            <div class="job-title" data-i18n="gs_title">ETL &amp; Analytics Designer II</div>
+            <div class="job-date" data-i18n="gs_date">Feb 2024 – Aug 2025</div>
           </div>
         </div>
         <div class="job-body"><div class="job-body-inner"><ul>
-          <li>Designed and built robust ELT systems for financial and payroll data streams.</li>
-          <li>Engineered API integrations to connect third-party platforms with internal pipelines.</li>
-          <li>Redesigned pipeline architecture, improving reliability and reducing processing time.</li>
+          <li data-i18n="gs_b1">Designed and built robust ELT systems for financial and payroll data streams.</li>
+          <li data-i18n="gs_b2">Engineered API integrations to connect third-party platforms with internal pipelines.</li>
+          <li data-i18n="gs_b3">Redesigned pipeline architecture, improving reliability and reducing processing time.</li>
         </ul></div></div>
       </div>
     </div>
@@ -598,15 +1069,15 @@
               <span class="co-name">Latchel Inc</span>
               <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </div>
-            <div class="job-title">Operations BI Lead</div>
-            <div class="job-date">Jan 2022 – Present</div>
+            <div class="job-title" data-i18n="la_title">Operations BI Lead</div>
+            <div class="job-date" data-i18n="la_date">Jan 2022 – Present</div>
           </div>
         </div>
         <div class="job-body"><div class="job-body-inner"><ul>
-          <li>Built the entire analytics infrastructure from scratch — ingestion to dashboards.</li>
-          <li>Developed a full reporting layer covering operations, finance, and customer success.</li>
-          <li>Built a PDF reader AI agent to automate document processing and extraction.</li>
-          <li>Implemented NLP sentiment analysis to surface customer insights at scale.</li>
+          <li data-i18n="la_b1">Built the entire analytics infrastructure from scratch — ingestion to dashboards.</li>
+          <li data-i18n="la_b2">Developed a full reporting layer covering operations, finance, and customer success.</li>
+          <li data-i18n="la_b3">Built a PDF reader AI agent to automate document processing and extraction.</li>
+          <li data-i18n="la_b4">Implemented NLP sentiment analysis to surface customer insights at scale.</li>
         </ul></div></div>
       </div>
     </div>
@@ -630,13 +1101,13 @@
               <span class="co-name">Experian</span>
               <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </div>
-            <div class="job-title">Automation &amp; Data Analytics Lead</div>
-            <div class="job-date">Oct 2021 – Jan 2022</div>
+            <div class="job-title" data-i18n="ex_title">Automation &amp; Data Analytics Lead</div>
+            <div class="job-date" data-i18n="ex_date">Oct 2021 – Jan 2022</div>
           </div>
         </div>
         <div class="job-body"><div class="job-body-inner"><ul>
-          <li>Built org-wide analytics infrastructure, centralising automation analysis and reporting.</li>
-          <li>Defined the reporting and analytics roadmap, standardising data across business units.</li>
+          <li data-i18n="ex_b1">Built org-wide analytics infrastructure, centralising automation analysis and reporting.</li>
+          <li data-i18n="ex_b2">Defined the reporting and analytics roadmap, standardising data across business units.</li>
         </ul></div></div>
       </div>
     </div>
@@ -667,13 +1138,13 @@
               <span class="co-name">Swarovski</span>
               <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </div>
-            <div class="job-title">Global Data &amp; Reporting Analyst</div>
-            <div class="job-date">Mar 2021 – Aug 2021</div>
+            <div class="job-title" data-i18n="sw_title">Global Data &amp; Reporting Analyst</div>
+            <div class="job-date" data-i18n="sw_date">Mar 2021 – Aug 2021</div>
           </div>
         </div>
         <div class="job-body"><div class="job-body-inner"><ul>
-          <li>Automated 100% of performance analysis reporting, eliminating all manual processes.</li>
-          <li>Defined a global reporting and analytics roadmap for sales and operations teams.</li>
+          <li data-i18n="sw_b1">Automated 100% of performance analysis reporting, eliminating all manual processes.</li>
+          <li data-i18n="sw_b2">Defined a global reporting and analytics roadmap for sales and operations teams.</li>
         </ul></div></div>
       </div>
     </div>
@@ -697,16 +1168,16 @@
               <span class="co-name">Walmart</span>
               <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
             </div>
-            <div class="job-title">Digital Transformation Manager</div>
-            <div class="job-date">May 2013 – Nov 2020</div>
+            <div class="job-title" data-i18n="wm_title">Digital Transformation Manager</div>
+            <div class="job-date" data-i18n="wm_date">May 2013 – Nov 2020</div>
           </div>
         </div>
         <div class="job-body"><div class="job-body-inner"><ul>
-          <li>Led full development of the company's P&amp;L reporting suite.</li>
-          <li>Spearheaded digital transformation initiatives across multiple departments.</li>
-          <li>Built and managed cross-functional teams to drive strategic execution.</li>
-          <li>Drove adoption of BI tools for operational management and communications.</li>
-          <li>Led Six Sigma / Lean improvement projects, eliminating waste and improving throughput.</li>
+          <li data-i18n="wm_b1">Led full development of the company's P&amp;L reporting suite.</li>
+          <li data-i18n="wm_b2">Spearheaded digital transformation initiatives across multiple departments.</li>
+          <li data-i18n="wm_b3">Built and managed cross-functional teams to drive strategic execution.</li>
+          <li data-i18n="wm_b4">Drove adoption of BI tools for operational management and communications.</li>
+          <li data-i18n="wm_b5">Led Six Sigma / Lean improvement projects, eliminating waste and improving throughput.</li>
         </ul></div></div>
       </div>
     </div>
@@ -732,13 +1203,13 @@
 <aside class="skills-panel">
 
   <div>
-    <h2 class="page-heading">Technical Skills</h2>
+    <h2 class="page-heading" data-i18n="sec_skills">Technical Skills</h2>
     <div class="heading-bar" style="margin-bottom:20px"></div>
   </div>
 
   <!-- Languages & Databases -->
   <div class="skill-cat">
-    <div class="skill-cat-label">Languages &amp; Databases</div>
+    <div class="skill-cat-label" data-i18n="sk_lang_db">Languages &amp; Databases</div>
     <div class="skill-grid">
       <div class="sk">
         <img src="https://cdn.simpleicons.org/python/3776AB" alt="Python" onerror="this.style.display='none'" />
@@ -769,7 +1240,7 @@
 
   <!-- Data & AI -->
   <div class="skill-cat">
-    <div class="skill-cat-label">Data &amp; AI</div>
+    <div class="skill-cat-label" data-i18n="sk_data_ai">Data &amp; AI</div>
     <div class="skill-grid">
       <div class="sk">
         <img src="https://cdn.simpleicons.org/openai/1A2530" alt="AI Agents" onerror="this.style.display='none'" />
@@ -800,7 +1271,7 @@
 
   <!-- BI & Analytics -->
   <div class="skill-cat">
-    <div class="skill-cat-label">BI &amp; Analytics</div>
+    <div class="skill-cat-label" data-i18n="sk_bi">BI &amp; Analytics</div>
     <div class="skill-grid">
       <div class="sk">
         <img src="https://cdn.simpleicons.org/powerbi/F2C811" alt="Power BI" onerror="this.style.display='none'" />
@@ -831,7 +1302,7 @@
 
   <!-- Cloud & Infrastructure -->
   <div class="skill-cat">
-    <div class="skill-cat-label">Cloud &amp; Infrastructure</div>
+    <div class="skill-cat-label" data-i18n="sk_cloud">Cloud &amp; Infrastructure</div>
     <div class="skill-grid">
       <div class="sk">
         <img src="https://cdn.simpleicons.org/googlecloud/4285F4" alt="GCP" onerror="this.style.display='none'" />
@@ -860,21 +1331,358 @@
     </div>
   </div>
 
-  <!-- Profile -->
-  <div class="profile-box">
-    <div class="sec-label">Profile</div>
-    <p>"I build the systems that turn data into decisions — from pipeline to dashboard to production AI agent. If you need someone who can architect it, code it, and ship it, I am ready to talk."</p>
-  </div>
+  <!-- Profile box moved to floating popup -->
 
 </aside>
 
 </div><!-- /cv -->
 
+
+
+<!-- ══════════ AI CHATBOT ══════════ -->
+<button class="float-btn" id="chatFab" onclick="toggleChat()" aria-label="Chat with Jose's AI assistant">
+  ✦
+</button>
+<div class="chat-drawer" id="chatDrawer">
+  <div class="chat-header">
+    <div class="chat-header-dot"></div>
+    <div class="chat-header-title" data-i18n="chat_title">Ask about Jose's experience</div>
+    <button class="chat-header-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-quote" data-i18n="profile_quote">"I build the systems that turn data into decisions — from pipeline to dashboard to production AI agent. If you need someone who can architect it, code it, and ship it, I am ready to talk." - Jose</div>
+    <div class="chat-msg assistant" data-i18n="chat_welcome">Hi! 👋 I'm Jose's AI assistant. Ask me anything about his experience, skills, or background and I'll answer based on his resume.</div>
+  </div>
+  <div class="chat-input-area">
+    <input class="chat-input" id="chatInput" type="text" data-i18n-placeholder="chat_placeholder" placeholder="e.g. What AI projects has Jose led?" onkeydown="if(event.key==='Enter')sendMessage()" />
+    <button class="chat-send" id="chatSend" onclick="sendMessage()" aria-label="Send">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</div>
+
 <script>
+  /* ── Card toggle ── */
   function toggle(card) {
     const wasOpen = card.classList.contains('open');
     document.querySelectorAll('.job-card.open').forEach(c => c.classList.remove('open'));
     if (!wasOpen) card.classList.add('open');
+  }
+
+  /* ── Theme toggle ── */
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isVibrant = html.getAttribute('data-theme') === 'vibrant';
+    if (isVibrant) {
+      html.removeAttribute('data-theme');
+      localStorage.setItem('cv-theme', 'professional');
+      document.getElementById('themeIcon').textContent = '☀️';
+      document.getElementById('themeLabel').textContent = 'Professional';
+    } else {
+      html.setAttribute('data-theme', 'vibrant');
+      localStorage.setItem('cv-theme', 'vibrant');
+      document.getElementById('themeIcon').textContent = '🌙';
+      document.getElementById('themeLabel').textContent = 'Vibrant';
+    }
+  }
+  // Restore theme on load
+  (function() {
+    const saved = localStorage.getItem('cv-theme');
+    if (saved === 'vibrant') {
+      document.documentElement.setAttribute('data-theme', 'vibrant');
+      document.getElementById('themeIcon').textContent = '🌙';
+      document.getElementById('themeLabel').textContent = 'Vibrant';
+    }
+  })();
+
+  /* ── Click outside to close chat ── */
+  document.addEventListener('click', function(e) {
+    const drawer = document.getElementById('chatDrawer');
+    const chatFab = document.getElementById('chatFab');
+    if (drawer.classList.contains('show') && !drawer.contains(e.target) && !chatFab.contains(e.target)) {
+      drawer.classList.remove('show');
+    }
+  });
+
+  /* ── Language toggle ── */
+  const I18N = {
+    es: {
+      role: 'Ingeniero de Datos & IA \u00a0\u00b7\u00a0 Arquitecto BI',
+      sec_summary: 'Resumen',
+      summary: '+12 años convirtiendo datos en sistemas de decisión. Desde pipelines ELT y data warehouses hasta agentes de IA en producción desplegados en BCG, Latchel, Experian, Swarovski y Walmart.',
+      sec_contact: 'Contacto',
+      sec_languages: 'Idiomas',
+      lang_en: 'Inglés',
+      lang_es: 'Español',
+      lang_pt: 'Portugués',
+      lang_native: 'Nativo',
+      sec_education: 'Educación',
+      edu1_deg: 'Ingeniería de Software',
+      edu1_sch: 'Universidad Técnica Nacional · En curso',
+      edu2_deg: 'Inglés Conversacional — C1/C2',
+      edu3_deg: 'Diploma de Secundaria',
+      sec_experience: 'Experiencia',
+      era1: '2025 · Presente',
+      rs_title: 'Fundador & Director',
+      rs_date: 'Ene 2025 – Presente',
+      rs_b1: 'Diseñó y lanzó agentes de IA listos para producción para mantenimiento de datos y automatización a escala.',
+      rs_b2: 'Construyó la infraestructura completa de agentes incluyendo herramientas de administración, monitoreo y pipelines de despliegue.',
+      rs_b3: 'Arquitectó pipelines ELT cubriendo ingesta, transformación y flujos de actualización de sistemas.',
+      rs_b4: 'Entregó soluciones end-to-end: calificación de leads, orquestación de IA y automatización de procesos.',
+      bcg_title: 'Product Manager — AskBCG / Findability',
+      bcg_date: 'Sep 2025 – Ene 2026',
+      bcg_b1: 'Impulsó el lanzamiento de una herramienta de Q&A impulsada por IA para preservar y compartir conocimiento institucional.',
+      bcg_b2: 'Definió el sistema North Star KPI y el marco de medición del producto.',
+      bcg_b3: 'Estableció OKRs para alinear stakeholders e impulsar la adopción en áreas de práctica.',
+      bcg_b4: 'Construyó un modelo de validación human-in-the-loop para asegurar la calidad de respuestas generadas.',
+      bcg_b5: 'Impulsó reglas de personalización por oficina y cohorte para mejorar la relevancia del contenido.',
+      gs_title: 'Diseñador ETL & Analytics II',
+      gs_date: 'Feb 2024 – Ago 2025',
+      gs_b1: 'Diseñó y construyó sistemas ELT robustos para flujos de datos financieros y de nómina.',
+      gs_b2: 'Desarrolló integraciones API para conectar plataformas externas con pipelines internos.',
+      gs_b3: 'Rediseñó la arquitectura de pipelines, mejorando fiabilidad y reduciendo tiempos de procesamiento.',
+      la_title: 'Líder de BI Operaciones',
+      la_date: 'Ene 2022 – Presente',
+      la_b1: 'Construyó toda la infraestructura de analytics desde cero — desde ingesta hasta dashboards.',
+      la_b2: 'Desarrolló una capa completa de reportes cubriendo operaciones, finanzas y éxito del cliente.',
+      la_b3: 'Construyó un agente de IA lector de PDFs para automatizar el procesamiento y extracción de documentos.',
+      la_b4: 'Implementó análisis de sentimiento con NLP para identificar insights de clientes a escala.',
+      ex_title: 'Líder de Automatización & Data Analytics',
+      ex_date: 'Oct 2021 – Ene 2022',
+      ex_b1: 'Construyó infraestructura de analytics a nivel organizacional, centralizando análisis de automatización y reportes.',
+      ex_b2: 'Definió la hoja de ruta de reportes y analytics, estandarizando datos entre unidades de negocio.',
+      sw_title: 'Analista Global de Datos & Reportes',
+      sw_date: 'Mar 2021 – Ago 2021',
+      sw_b1: 'Automatizó el 100% de los reportes de análisis de rendimiento, eliminando todos los procesos manuales.',
+      sw_b2: 'Definió una hoja de ruta global de reportes y analytics para equipos de ventas y operaciones.',
+      wm_title: 'Gerente de Transformación Digital',
+      wm_date: 'May 2013 – Nov 2020',
+      wm_b1: 'Lideró el desarrollo completo del suite de reportes P&L de la compañía.',
+      wm_b2: 'Encabezó iniciativas de transformación digital en múltiples departamentos.',
+      wm_b3: 'Construyó y gestionó equipos multifuncionales para impulsar la ejecución estratégica.',
+      wm_b4: 'Impulsó la adopción de herramientas BI para gestión operativa y comunicaciones.',
+      wm_b5: 'Lideró proyectos Six Sigma / Lean, eliminando desperdicios y mejorando productividad.',
+      sec_skills: 'Habilidades Técnicas',
+      sk_lang_db: 'Lenguajes & Bases de Datos',
+      sk_data_ai: 'Datos & IA',
+      sk_bi: 'BI & Analytics',
+      sk_cloud: 'Cloud & Infraestructura',
+      sec_profile: 'Perfil',
+      profile_quote: '"Construyo los sistemas que convierten datos en decisiones — desde pipelines hasta dashboards y agentes de IA en producción. Si necesitas a alguien que pueda diseñarlo, programarlo y desplegarlo, estoy listo para hablar." - Jose',
+      cta_talk: 'Hablemos',
+      chat_title: 'Pregunta sobre la experiencia de Jose',
+      chat_welcome: '¡Hola! 👋 Soy el asistente de IA de Jose. Pregúntame lo que quieras sobre su experiencia, habilidades o formación y te responderé basado en su currículum.',
+      chat_placeholder: 'ej. ¿Qué proyectos de IA ha liderado Jose?',
+    }
+  };
+
+  // Store English originals
+  const I18N_EN = {};
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    I18N_EN[el.getAttribute('data-i18n')] = el.innerHTML;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    I18N_EN[el.getAttribute('data-i18n-placeholder')] = el.placeholder;
+  });
+
+  function toggleLang() {
+    const html = document.documentElement;
+    const isEs = html.getAttribute('data-lang') === 'es';
+    if (isEs) {
+      html.removeAttribute('data-lang');
+      localStorage.setItem('cv-lang', 'en');
+      applyLanguage('en');
+    } else {
+      html.setAttribute('data-lang', 'es');
+      localStorage.setItem('cv-lang', 'es');
+      applyLanguage('es');
+    }
+  }
+
+  function applyLanguage(lang) {
+    const dict = lang === 'es' ? I18N.es : I18N_EN;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key]) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key]) el.placeholder = dict[key];
+    });
+    // Update toggle UI
+    document.getElementById('langFlag').textContent = lang === 'es' ? '🇪🇸' : '🇺🇸';
+    document.getElementById('langCode').textContent = lang === 'es' ? 'ES' : 'EN';
+    // Update HTML lang attribute
+    document.documentElement.lang = lang;
+  }
+
+  // Restore saved language on load
+  (function() {
+    const savedLang = localStorage.getItem('cv-lang');
+    if (savedLang === 'es') {
+      document.documentElement.setAttribute('data-lang', 'es');
+      applyLanguage('es');
+    }
+  })();
+
+  /* ── AI Chatbot ── */
+  function toggleChat() {
+    const drawer = document.getElementById('chatDrawer');
+    drawer.classList.toggle('show');
+    if (drawer.classList.contains('show')) {
+      document.getElementById('chatInput').focus();
+    }
+  }
+
+  const PROXY_URL = 'https://gemini-cv-proxy-hqfdhwhhga-uc.a.run.app';
+
+  const JOSE_RESUME_CONTEXT = `
+Jose Leon Salgado — Data & AI Engineer | BI Architect
+San José, Costa Rica | joseleonsalgado@gmail.com | (506) 7075-2247 | LinkedIn: joseleon9
+
+SUMMARY:
+12+ years turning raw data into decision systems. From ELT pipelines and data warehouses to production AI agents deployed at BCG, Latchel, Experian, Swarovski, and Walmart.
+
+EXPERIENCE:
+
+1. RubikSoft — Founder & Principal (Jan 2025 – Present)
+- Designed and launched production-ready AI agents for data maintenance and automation at scale.
+- Built the full agent infrastructure including admin tooling, monitoring, and deployment pipelines.
+- Architected ELT pipelines covering ingestion, transformation, and system update flows.
+- Delivered end-to-end solutions: lead qualification, AI orchestration, and process automation.
+
+2. BCG — Product Manager — AskBCG / Findability (Sep 2025 – Jan 2026)
+- Drove the launch of an AI-powered policy Q&A tool to preserve and surface institutional knowledge.
+- Defined the North Star KPI system and measurement framework for the product.
+- Established OKRs to align stakeholders and drive adoption across practice areas.
+- Built a human-in-the-loop validation model for quality assurance on generated answers.
+- Drove office and cohort personalisation rules to improve content relevance.
+
+3. Greenslate — ETL & Analytics Designer II (Feb 2024 – Aug 2025)
+- Designed and built robust ELT systems for financial and payroll data streams.
+- Engineered API integrations to connect third-party platforms with internal pipelines.
+- Redesigned pipeline architecture, improving reliability and reducing processing time.
+
+4. Latchel Inc — Operations BI Lead (Jan 2022 – Present)
+- Built the entire analytics infrastructure from scratch — ingestion to dashboards.
+- Developed a full reporting layer covering operations, finance, and customer success.
+- Built a PDF reader AI agent to automate document processing and extraction.
+- Implemented NLP sentiment analysis to surface customer insights at scale.
+
+5. Experian — Automation & Data Analytics Lead (Oct 2021 – Jan 2022)
+- Built org-wide analytics infrastructure, centralising automation analysis and reporting.
+- Defined the reporting and analytics roadmap, standardising data across business units.
+
+6. Swarovski — Global Data & Reporting Analyst (Mar 2021 – Aug 2021)
+- Automated 100% of performance analysis reporting, eliminating all manual processes.
+- Defined a global reporting and analytics roadmap for sales and operations teams.
+
+7. Walmart — Digital Transformation Manager (May 2013 – Nov 2020)
+- Led full development of the company's P&L reporting suite.
+- Spearheaded digital transformation initiatives across multiple departments.
+- Built and managed cross-functional teams to drive strategic execution.
+- Drove adoption of BI tools for operational management and communications.
+- Led Six Sigma / Lean improvement projects, eliminating waste and improving throughput.
+
+TECHNICAL SKILLS:
+- Languages & Databases: Python, SQL, BigQuery, C#, MySQL, PL/SQL
+- Data & AI: AI Agents, Vector Stores, NLP, ML Deploy, n8n, ETL/ELT
+- BI & Analytics: Power BI, Tableau, Looker Studio, Azure Synapse, Alteryx, BQ Analytics
+- Cloud & Infrastructure: GCP, Azure Data Factory, Snowflake, Serverless, CI/CD, Secrets Mgmt
+
+LANGUAGES: English (C2), Spanish (Native), Portuguese (B2)
+
+EDUCATION:
+- Software Engineering — Universidad Técnica Nacional (Ongoing)
+- Conversational English C1/C2 — IPAI (2001)
+- High School Diploma — Colegio Manuel Benavides R. (1998)
+
+PROFILE:
+"I build the systems that turn data into decisions — from pipeline to dashboard to production AI agent. If you need someone who can architect it, code it, and ship it, I am ready to talk." Jose
+`;
+
+  const SYSTEM_PROMPT = `You are Jose Leon Salgado's personal AI assistant on his CV website. Your sole purpose is to answer questions about Jose's professional experience, skills, education, and background using ONLY the information provided in his resume context below.
+
+Rules:
+1. ONLY answer based on the resume context provided. Do not make up or infer information not present.
+2. Be friendly, professional, and concise.
+3. If someone asks something unrelated to Jose or his experience, politely decline and redirect: "I can only help with questions about Jose's professional background. What would you like to know about his experience?"
+4. Use specific details from the resume when answering (company names, dates, achievements).
+5. Keep responses brief — 2-4 sentences max unless a detailed answer is warranted.
+6. You may format your responses using bold text with **text** for emphasis.
+
+Resume Context:
+${JOSE_RESUME_CONTEXT}`;
+
+  let chatHistory = [];
+
+  async function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    input.value = '';
+    addMessage('user', msg);
+    chatHistory.push({ role: 'user', parts: [{ text: msg }] });
+
+    // Show typing indicator
+    const typing = document.createElement('div');
+    typing.className = 'typing-indicator';
+    typing.id = 'typingIndicator';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    document.getElementById('chatMessages').appendChild(typing);
+    scrollChat();
+
+    const sendBtn = document.getElementById('chatSend');
+    sendBtn.disabled = true;
+
+    try {
+      const response = await fetch(
+        `${PROXY_URL}/chat`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+            contents: chatHistory,
+            generationConfig: {
+              temperature: 0.4,
+              maxOutputTokens: 400,
+            }
+          })
+        }
+      );
+
+      const data = await response.json();
+      const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text
+        || "Sorry, I couldn't process that. Please try again.";
+
+      chatHistory.push({ role: 'model', parts: [{ text: reply }] });
+      const typingEl = document.getElementById('typingIndicator');
+      if (typingEl) typingEl.remove();
+      addMessage('assistant', reply);
+    } catch (err) {
+      const typingEl = document.getElementById('typingIndicator');
+      if (typingEl) typingEl.remove();
+      addMessage('assistant', "Oops, something went wrong. Please try again in a moment.");
+    }
+
+    sendBtn.disabled = false;
+  }
+
+  function addMessage(role, text) {
+    const container = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.className = `chat-msg ${role}`;
+    // Simple markdown bold
+    div.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    container.appendChild(div);
+    scrollChat();
+  }
+
+  function scrollChat() {
+    const container = document.getElementById('chatMessages');
+    container.scrollTop = container.scrollHeight;
   }
 </script>
 </body>
