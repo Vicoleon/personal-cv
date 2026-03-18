@@ -688,6 +688,8 @@
       font-size: 0.78rem;
       line-height: 1.65;
       animation: msgIn 0.3s ease-out;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
     @keyframes msgIn {
       from { opacity: 0; transform: translateY(8px); }
@@ -760,6 +762,9 @@
       color: var(--text);
       outline: none;
       transition: border-color 0.2s;
+      resize: none;
+      max-height: 120px;
+      overflow-y: auto;
     }
     .chat-input::placeholder { color: var(--text3); }
     .chat-input:focus { border-color: var(--blue); }
@@ -1363,7 +1368,7 @@
     <div class="chat-msg assistant" data-i18n="chat_welcome">Hi! 👋 I'm Jose's AI assistant. Ask me about his experience, or if he's a good fit for a specific role you're hiring for!</div>
   </div>
   <div class="chat-input-area">
-    <input class="chat-input" id="chatInput" type="text" data-i18n-placeholder="chat_placeholder" placeholder="e.g. Is Jose a good fit for a Sr. Data Engineer role?" onkeydown="if(event.key==='Enter')sendMessage()" />
+    <textarea class="chat-input" id="chatInput" rows="1" data-i18n-placeholder="chat_placeholder" placeholder="e.g. Is Jose a good fit for a Sr. Data Engineer role?" onkeydown="handleInputKey(event)" oninput="autoExpand(this)"></textarea>
     <button class="chat-send" id="chatSend" onclick="sendMessage()" aria-label="Send">
       <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
@@ -1634,6 +1639,7 @@ MISSION RULES:
     if (!msg) return;
 
     input.value = '';
+    input.style.height = ''; // reset height
     addMessage('user', msg);
     chatHistory.push({ role: 'user', parts: [{ text: msg }] });
 
@@ -1687,8 +1693,11 @@ MISSION RULES:
     const container = document.getElementById('chatMessages');
     const div = document.createElement('div');
     div.className = `chat-msg ${role}`;
-    // Simple markdown bold
-    div.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    // Basic markdown replacement
+    let formattedText = text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>');
+    div.innerHTML = formattedText;
     container.appendChild(div);
     scrollChat();
   }
@@ -1696,6 +1705,18 @@ MISSION RULES:
   function scrollChat() {
     const container = document.getElementById('chatMessages');
     container.scrollTop = container.scrollHeight;
+  }
+
+  function handleInputKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  }
+
+  function autoExpand(field) {
+    field.style.height = 'inherit';
+    field.style.height = (field.scrollHeight) + 'px';
   }
 </script>
 </body>
