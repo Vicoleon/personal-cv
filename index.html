@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jose Leon Salgado — Data & AI Engineer | BI Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #07090F;
+      --sidebar:  #060810;
+      --card:     #0F1420;
+      --card-hov: #131828;
+      --border:   #1C2336;
+      --blue:     #4D8DF4;
+      --blue-bg:  rgba(77,141,244,0.10);
+      --teal:     #2CBDA8;
+      --teal-bg:  rgba(44,189,168,0.10);
+      --text:     #E1E7F2;
+      --text2:    #8895AE;
+      --text3:    #4A5670;
+      --serif:    'DM Serif Display', Georgia, serif;
+      --sans:     'Inter', system-ui, sans-serif;
+    }
+
+    html { font-size: 14px; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ── LAYOUT ── */
+    .cv {
+      display: grid;
+      grid-template-columns: 228px 1fr 270px;
+      width: 100%;
+      max-width: 1440px;
+      min-height: 100vh;
+    }
+
+    /* ══════════ SIDEBAR ══════════ */
+    .sidebar {
+      background: var(--sidebar);
+      border-right: 1px solid var(--border);
+      padding: 38px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .sidebar::-webkit-scrollbar { width: 3px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .name-block { padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+    .name-block h1 {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.15;
+    }
+    .name-block .role {
+      margin-top: 7px;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .sec-label {
+      font-size: 0.61rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .sidebar p {
+      font-size: 0.79rem;
+      line-height: 1.72;
+      color: var(--text2);
+    }
+
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .contact-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 0.77rem; color: var(--text2); }
+    .ci { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; color: var(--teal); }
+    .contact-list a { color: inherit; text-decoration: none; }
+    .contact-list a:hover { color: var(--text); }
+
+    .lang { margin-bottom: 9px; }
+    .lang-top { display: flex; justify-content: space-between; font-size: 0.77rem; color: var(--text2); margin-bottom: 4px; }
+    .lang-lv { font-size: 0.67rem; color: var(--teal); font-weight: 600; }
+    .lang-bar { height: 2px; background: var(--border); border-radius: 1px; overflow: hidden; }
+    .lang-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--teal)); border-radius: 1px; }
+
+    .edu { margin-bottom: 11px; }
+    .edu-deg { font-size: 0.78rem; font-weight: 600; color: var(--text); line-height: 1.3; }
+    .edu-sch { font-size: 0.7rem; color: var(--text3); margin-top: 2px; }
+
+    /* ══════════ EXPERIENCE ══════════ */
+    .experience { padding: 42px 34px; overflow-y: auto; }
+
+    .page-heading {
+      font-family: var(--serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      margin-bottom: 6px;
+    }
+    .heading-bar {
+      width: 34px; height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--teal));
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    /* TIMELINE GRID */
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr 90px 1fr;
+    }
+
+    /* ERA DIVIDER — spans all 3 cols */
+    .era {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 18px 0 16px;
+    }
+    .era:first-child { margin-top: 0; }
+    .era-line { flex: 1; height: 1px; background: var(--border); }
+    .era-pill {
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--blue);
+      padding: 3px 10px;
+      border: 1px solid rgba(77,141,244,0.28);
+      border-radius: 20px;
+      background: rgba(77,141,244,0.07);
+      white-space: nowrap;
+    }
+
+    /* CENTER COLUMN — logos + vertical line */
+    .tl-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    /* The continuous vertical line behind everything */
+    .tl-center::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      background: var(--border);
+      z-index: 0;
+    }
+
+    /* Node: two logos flanking a small dot */
+    .tl-node {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 14px;
+      z-index: 1;
+      position: relative;
+    }
+    .co-circle {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 2px var(--bg);
+    }
+    .co-circle img { width: 18px; height: 18px; object-fit: contain; }
+    .co-circle .ci-init {
+      font-size: 0.55rem;
+      font-weight: 800;
+      color: #222;
+      background: #f0f0f0;
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tl-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 1.5px solid var(--bg);
+      box-shadow: 0 0 0 1.5px var(--blue);
+      flex-shrink: 0;
+    }
+    .tl-dot.t { background: var(--teal); box-shadow: 0 0 0 1.5px var(--teal); }
+    /* filler — stretches the remaining center space */
+    .tl-fill { flex: 1; }
+
+    /* CARDS */
+    .tl-left  { padding-right: 18px; }
+    .tl-right { padding-left: 18px; }
+
+    .job-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .job-card:last-child { margin-bottom: 0; }
+    .job-card:hover { border-color: var(--blue); }
+
+    .job-header {
+      padding: 13px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+    }
+    /* inline company logo badge */
+    .co-badge {
+      width: 34px; height: 34px;
+      border-radius: 7px;
+      background: #fff;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .co-badge img { width: 24px; height: 24px; object-fit: contain; }
+    .co-badge .b-init {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 800; color: #1a1a1a;
+      background: #efefef;
+    }
+
+    .job-info { flex: 1; min-width: 0; }
+    .job-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 6px; }
+    .co-name { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+    .chevron {
+      width: 14px; height: 14px;
+      color: var(--text3);
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: transform 0.25s ease;
+    }
+    .job-card.open .chevron { transform: rotate(180deg); }
+    .job-title { font-size: 0.74rem; font-weight: 500; color: var(--blue); margin-top: 2px; }
+    .job-date  { font-size: 0.67rem; color: var(--text3); margin-top: 2px; }
+
+    /* expandable */
+    .job-body { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(.4,0,.2,1); }
+    .job-card.open .job-body { max-height: 600px; }
+    .job-body-inner {
+      padding: 11px 14px 14px;
+      border-top: 1px solid var(--border);
+    }
+    .job-body-inner ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .job-body-inner li {
+      font-size: 0.77rem;
+      color: var(--text2);
+      line-height: 1.62;
+      padding-left: 13px;
+      position: relative;
+    }
+    .job-body-inner li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 7px;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    /* ══════════ SKILLS PANEL ══════════ */
+    .skills-panel {
+      border-left: 1px solid var(--border);
+      background: var(--sidebar);
+      padding: 42px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow-y: auto;
+    }
+    .skills-panel::-webkit-scrollbar { width: 3px; }
+    .skills-panel::-webkit-scrollbar-thumb { background: var(--border); }
+    .skills-panel .page-heading { font-size: 1.45rem; margin-bottom: 4px; }
+
+    .skill-cat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px;
+    }
+    .skill-cat-label {
+      font-size: 0.61rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 11px;
+    }
+
+    /* 3-col icon grid */
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+    }
+    .sk {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 9px 4px 7px;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      transition: border-color 0.2s, background 0.2s;
+      cursor: default;
+    }
+    .sk:hover { border-color: rgba(77,141,244,0.4); background: var(--blue-bg); }
+    .sk img { width: 22px; height: 22px; object-fit: contain; }
+    .sk span {
+      font-size: 0.6rem;
+      color: var(--text2);
+      text-align: center;
+      line-height: 1.3;
+    }
+    .sk-text {
+      width: 22px; height: 22px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.52rem; font-weight: 800;
+      color: var(--text2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    /* Profile */
+    .profile-box {
+      background: linear-gradient(135deg, #0C1322 0%, #0E1C31 100%);
+      border: 1px solid rgba(77,141,244,0.2);
+      border-radius: 10px;
+      padding: 15px;
+    }
+    .profile-box .sec-label { color: var(--teal); margin-bottom: 8px; }
+    .profile-box p { font-size: 0.78rem; line-height: 1.78; color: var(--text2); font-style: italic; }
+
+    /* ══════════ RESPONSIVE ══════════ */
+    @media (max-width: 1080px) { .cv { grid-template-columns: 210px 1fr 248px; } }
+    @media (max-width: 860px) {
+      .cv { grid-template-columns: 1fr; }
+      .sidebar, .skills-panel { position: static; height: auto; }
+      .skills-panel { border-left: none; border-top: 1px solid var(--border); }
+    }
+    @media (max-width: 600px) {
+      .timeline { grid-template-columns: 1fr; }
+      .tl-center { display: none; }
+      .tl-left, .tl-right { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="cv">
+
+<!-- ════════════════ SIDEBAR ════════════════ -->
+<aside class="sidebar">
+
+  <div class="name-block">
+    <h1>Jose Leon<br>Salgado</h1>
+    <div class="role">Data &amp; AI Engineer &nbsp;·&nbsp; BI Architect</div>
+  </div>
+
+  <div>
+    <div class="sec-label">Summary</div>
+    <p>12+ years turning raw data into decision systems. From ELT pipelines and data warehouses to production AI agents deployed at BCG, Latchel, Experian, Swarovski, and Walmart.</p>
+  </div>
+
+  <div>
+    <div class="sec-label">Contact</div>
+    <ul class="contact-list">
+      <li>
+        <svg class="ci" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        (506) 7075-2247
+      </li>
+      <li>
+        <svg class="ci" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <a href="mailto:joseleonsalgado@gmail.com">joseleonsalgado@gmail.com</a>
+      </li>
+      <li>
+        <svg class="ci" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        San José, Costa Rica
+      </li>
+      <li>
+        <svg class="ci" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a href="https://www.linkedin.com/in/joseleon9/" target="_blank">Jose Leon</a>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <div class="sec-label">Languages</div>
+    <div class="lang">
+      <div class="lang-top"><span>English</span><span class="lang-lv">C2</span></div>
+      <div class="lang-bar"><div class="lang-fill" style="width:96%"></div></div>
+    </div>
+    <div class="lang">
+      <div class="lang-top"><span>Spanish</span><span class="lang-lv">Native</span></div>
+      <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+    </div>
+    <div class="lang">
+      <div class="lang-top"><span>Portuguese</span><span class="lang-lv">B2</span></div>
+      <div class="lang-bar"><div class="lang-fill" style="width:68%"></div></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="sec-label">Education</div>
+    <div class="edu">
+      <div class="edu-deg">Software Engineering</div>
+      <div class="edu-sch">Universidad Técnica Nacional · Ongoing</div>
+    </div>
+    <div class="edu">
+      <div class="edu-deg">Conversational English — C1/C2</div>
+      <div class="edu-sch">IPAI · 2001</div>
+    </div>
+    <div class="edu">
+      <div class="edu-deg">High School Diploma</div>
+      <div class="edu-sch">Colegio Manuel Benavides R. · 1998</div>
+    </div>
+  </div>
+
+</aside>
+
+<!-- ════════════════ EXPERIENCE ════════════════ -->
+<main class="experience">
+
+  <h2 class="page-heading">Experience</h2>
+  <div class="heading-bar"></div>
+
+  <div class="timeline">
+
+    <!-- ── ERA 1 ── -->
+    <div class="era">
+      <div class="era-line"></div>
+      <div class="era-pill">2025 · Present</div>
+      <div class="era-line"></div>
+    </div>
+
+    <!-- LEFT: RubikSoft -->
+    <div class="tl-left">
+      <div class="job-card" onclick="toggle(this)">
+        <div class="job-header">
+          <div class="co-badge" style="background:#6432B4;border-color:#7a42cc;">
+            <img src="rubiksoft.svg" alt="RubikSoft" style="width:28px;height:28px;" />
+          </div>
+          <div class="job-info">
+            <div class="job-top">
+              <span class="co-name">RubikSoft</span>
+              <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="job-title">Founder &amp; Principal</div>
+            <div class="job-date">Jan 2025 – Present</div>
+          </div>
+        </div>
+        <div class="job-body"><div class="job-body-inner"><ul>
+          <li>Designed and launched production-ready AI agents for data maintenance and automation at scale.</li>
+          <li>Built the full agent infrastructure including admin tooling, monitoring, and deployment pipelines.</li>
+          <li>Architected ELT pipelines covering ingestion, transformation, and system update flows.</li>
+          <li>Delivered end-to-end solutions: lead qualification, AI orchestration, and process automation.</li>
+        </ul></div></div>
+      </div>
+    </div>
+
+    <!-- CENTER node -->
+    <div class="tl-center">
+      <div class="tl-node">
+        <div class="co-circle" style="background:#6432B4;border-color:#7a42cc;">
+          <img src="rubiksoft.svg" alt="RS" />
+        </div>
+        <div class="tl-dot"></div>
+        <div class="co-circle">
+          <img src="https://logo.clearbit.com/bcg.com"
+               onerror="this.parentNode.innerHTML='<div class=ci-init>BCG</div>'" alt="BCG" />
+        </div>
+      </div>
+      <div class="tl-fill"></div>
+    </div>
+
+    <!-- RIGHT: BCG -->
+    <div class="tl-right">
+      <div class="job-card" onclick="toggle(this)">
+        <div class="job-header">
+          <div class="co-badge">
+            <img src="https://logo.clearbit.com/bcg.com"
+                 onerror="this.parentNode.innerHTML='<div class=b-init>BCG</div>'" alt="BCG" />
+          </div>
+          <div class="job-info">
+            <div class="job-top">
+              <span class="co-name">BCG</span>
+              <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="job-title">Product Manager — AskBCG / Findability</div>
+            <div class="job-date">Sep 2025 – Jan 2026</div>
+          </div>
+        </div>
+        <div class="job-body"><div class="job-body-inner"><ul>
+          <li>Drove the launch of an AI-powered policy Q&amp;A tool to preserve and surface institutional knowledge.</li>
+          <li>Defined the North Star KPI system and measurement framework for the product.</li>
+          <li>Established OKRs to align stakeholders and drive adoption across practice areas.</li>
+          <li>Built a human-in-the-loop validation model for quality assurance on generated answers.</li>
+          <li>Drove office and cohort personalisation rules to improve content relevance.</li>
+        </ul></div></div>
+      </div>
+    </div>
+
+    <!-- ── ERA 2 ── -->
+    <div class="era">
+      <div class="era-line"></div>
+      <div class="era-pill">2022 · 2025</div>
+      <div class="era-line"></div>
+    </div>
+
+    <!-- LEFT: Greenslate -->
+    <div class="tl-left">
+      <div class="job-card" onclick="toggle(this)">
+        <div class="job-header">
+          <div class="co-badge">
+            <img src="https://logo.clearbit.com/greenslate.com"
+                 onerror="this.parentNode.innerHTML='<div class=b-init>GS</div>'" alt="Greenslate" />
+          </div>
+          <div class="job-info">
+            <div class="job-top">
+              <span class="co-name">Greenslate</span>
+              <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="job-title">ETL &amp; Analytics Designer II</div>
+            <div class="job-date">Feb 2024 – Aug 2025</div>
+          </div>
+        </div>
+        <div class="job-body"><div class="job-body-inner"><ul>
+          <li>Designed and built robust ELT systems for financial and payroll data streams.</li>
+          <li>Engineered API integrations to connect third-party platforms with internal pipelines.</li>
+          <li>Redesigned pipeline architecture, improving reliability and reducing processing time.</li>
+        </ul></div></div>
+      </div>
+    </div>
+
+    <!-- CENTER node -->
+    <div class="tl-center">
+      <div class="tl-node">
+        <div class="co-circle">
+          <img src="https://logo.clearbit.com/greenslate.com"
+               onerror="this.parentNode.innerHTML='<div class=ci-init>GS</div>'" alt="GS" />
+        </div>
+        <div class="tl-dot t"></div>
+        <div class="co-circle">
+          <img src="https://logo.clearbit.com/latchel.com"
+               onerror="this.parentNode.innerHTML='<div class=ci-init>LC</div>'" alt="Latchel" />
+        </div>
+      </div>
+      <div class="tl-fill"></div>
+    </div>
+
+    <!-- RIGHT: Latchel -->
+    <div class="tl-right">
+      <div class="job-card" onclick="toggle(this)">
+        <div class="job-header">
+          <div class="co-badge">
+            <img src="https://logo.clearbit.com/latchel.com"
+                 onerror="this.parentNode.innerHTML='<div class=b-init>LC</div>'" alt="Latchel" />
+          </div>
+          <div class="job-info">
+            <div class="job-top">
+              <span class="co-name">Latchel Inc</span>
+              <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="job-title">Operations BI Lead</div>
+            <div class="job-date">Jan 2022 – Present</div>
+          </div>
+        </div>
+        <div class="job-body"><div class="job-body-inner"><ul>
+          <li>Built the entire analytics infrastructure from scratch — ingestion to dashboards.</li>
+          <li>Developed a full reporting layer covering operations, finance, and customer success.</li>
+          <li>Built a PDF reader AI agent to automate document processing and extraction.</li>
+          <li>Implemented NLP sentiment analysis to surface customer insights at scale.</li>
+        </ul></div></div>
+      </div>
+    </div>
+
+    <!-- ── ERA 3 ── -->
+    <div class="era">
+      <div class="era-line"></div>
+      <div class="era-pill">2021 · 2022</div>
+      <div class="era-line"></div>
+    </div>
+
+    <!-- LEFT: Experian -->
+    <div class="tl-left">
+      <div class="job-card" onclick="toggle(this)">
+        <div class="job-header">
+          <div class="co-badge">
+            <img src="https://logo.clearbit.com/experian.com"
+                 onerror="this.parentNode.innerHTML='<div class=b-init>EXP</div>'" alt="Experian" />
+          </div>
+          <div class="job-info">
+            <div class="job-top">
+              <span class="co-name">Experian</span>
+              <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="job-title">Automation &amp; Data Analytics Lead</div>
+            <div class="job-date">Oct 2021 – Jan 2022</div>
+          </div>
+        </div>
+        <div class="job-body"><div class="job-body-inner"><ul>
+          <li>Built org-wide analytics infrastructure, centralising automation analysis and reporting.</li>
+          <li>Defined the reporting and analytics roadmap, standardising data across business units.</li>
+        </ul></div></div>
+      </div>
+    </div>
+
+    <!-- CENTER node -->
+    <div class="tl-center">
+      <div class="tl-node">
+        <div class="co-circle">
+          <img src="https://logo.clearbit.com/experian.com"
+               onerror="this.parentNode.innerHTML='<div class=ci-init>EXP</div>'" alt="Experian" />
+        </div>
+        <div class="tl-dot"></div>
+        <div class="co-circle">
+          <img src="https://logo.clearbit.com/swarovski.com"
+               onerror="this.parentNode.innerHTML='<div class=ci-init>SW</div>'" alt="Swarovski" />
+        </div>
+      </div>
+      <div class="tl-fill"></div>
+    </div>
+
+    <!-- RIGHT: Swarovski -->
+    <div class="tl-right">
+      <div class="job-card" onclick="toggle(this)">
+        <div class="job-header">
+          <div class="co-badge">
+            <img src="https://logo.clearbit.com/swarovski.com"
+                 onerror="this.parentNode.innerHTML='<div class=b-init>SW</div>'" alt="Swarovski" />
+          </div>
+          <div class="job-info">
+            <div class="job-top">
+              <span class="co-name">Swarovski</span>
+              <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="job-title">Global Data &amp; Reporting Analyst</div>
+            <div class="job-date">Mar 2021 – Aug 2021</div>
+          </div>
+        </div>
+        <div class="job-body"><div class="job-body-inner"><ul>
+          <li>Automated 100% of performance analysis reporting, eliminating all manual processes.</li>
+          <li>Defined a global reporting and analytics roadmap for sales and operations teams.</li>
+        </ul></div></div>
+      </div>
+    </div>
+
+    <!-- ── ERA 4 ── -->
+    <div class="era">
+      <div class="era-line"></div>
+      <div class="era-pill">2013 · 2020</div>
+      <div class="era-line"></div>
+    </div>
+
+    <!-- LEFT: Walmart -->
+    <div class="tl-left">
+      <div class="job-card" onclick="toggle(this)">
+        <div class="job-header">
+          <div class="co-badge">
+            <img src="https://logo.clearbit.com/walmart.com"
+                 onerror="this.parentNode.innerHTML='<div class=b-init>WMT</div>'" alt="Walmart" />
+          </div>
+          <div class="job-info">
+            <div class="job-top">
+              <span class="co-name">Walmart</span>
+              <svg class="chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="job-title">Digital Transformation Manager</div>
+            <div class="job-date">May 2013 – Nov 2020</div>
+          </div>
+        </div>
+        <div class="job-body"><div class="job-body-inner"><ul>
+          <li>Led full development of the company's P&amp;L reporting suite.</li>
+          <li>Spearheaded digital transformation initiatives across multiple departments.</li>
+          <li>Built and managed cross-functional teams to drive strategic execution.</li>
+          <li>Drove adoption of BI tools for operational management and communications.</li>
+          <li>Led Six Sigma / Lean improvement projects, eliminating waste and improving throughput.</li>
+        </ul></div></div>
+      </div>
+    </div>
+
+    <!-- CENTER node (no right card) -->
+    <div class="tl-center">
+      <div class="tl-node">
+        <div class="co-circle">
+          <img src="https://logo.clearbit.com/walmart.com"
+               onerror="this.parentNode.innerHTML='<div class=ci-init>WMT</div>'" alt="Walmart" />
+        </div>
+        <div class="tl-dot t"></div>
+      </div>
+      <div class="tl-fill"></div>
+    </div>
+
+    <!-- RIGHT: empty -->
+    <div class="tl-right"></div>
+
+  </div><!-- /timeline -->
+</main>
+
+<!-- ════════════════ SKILLS ════════════════ -->
+<aside class="skills-panel">
+
+  <div>
+    <h2 class="page-heading">Technical Skills</h2>
+    <div class="heading-bar" style="margin-bottom:20px"></div>
+  </div>
+
+  <!-- Languages & Databases -->
+  <div class="skill-cat">
+    <div class="skill-cat-label">Languages &amp; Databases</div>
+    <div class="skill-grid">
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/python/3776AB" alt="Python" onerror="this.style.display='none'" />
+        <span>Python</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="SQL" onerror="this.style.display='none'" />
+        <span>SQL</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/googlebigquery/4285F4" alt="BigQuery" onerror="this.style.display='none'" />
+        <span>BigQuery</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/csharp/9B4F96" alt="C#" onerror="this.style.display='none'" />
+        <span>C#</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/mysql/4479A1" alt="MySQL" onerror="this.style.display='none'" />
+        <span>MySQL</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/oracle/F80000" alt="PL/SQL" onerror="this.style.display='none'" />
+        <span>PL/SQL</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data & AI -->
+  <div class="skill-cat">
+    <div class="skill-cat-label">Data &amp; AI</div>
+    <div class="skill-grid">
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/openai/ffffff" alt="AI Agents" onerror="this.style.display='none'" />
+        <span>AI Agents</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/pinecone/000000" alt="Vectors" onerror="this.outerHTML='<div class=sk-text>VDB</div>'" />
+        <span>Vector Stores</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/huggingface/FFD21E" alt="NLP" onerror="this.style.display='none'" />
+        <span>NLP</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/tensorflow/FF6F00" alt="ML Deploy" onerror="this.style.display='none'" />
+        <span>ML Deploy</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/n8n/EA4B71" alt="n8n" onerror="this.style.display='none'" />
+        <span>n8n</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/apacheairflow/017CEE" alt="ETL/ELT" onerror="this.style.display='none'" />
+        <span>ETL/ELT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BI & Analytics -->
+  <div class="skill-cat">
+    <div class="skill-cat-label">BI &amp; Analytics</div>
+    <div class="skill-grid">
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/powerbi/F2C811" alt="Power BI" onerror="this.style.display='none'" />
+        <span>Power BI</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/tableau/E97627" alt="Tableau" onerror="this.style.display='none'" />
+        <span>Tableau</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/looker/4285F4" alt="Looker Studio" onerror="this.outerHTML='<img src=https://cdn.simpleicons.org/googleanalytics/E37400 alt=Looker>' " />
+        <span>Looker Studio</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/microsoftazure/0078D4" alt="Synapse" onerror="this.style.display='none'" />
+        <span>Azure Synapse</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/alteryx/0078C0" alt="Alteryx" onerror="this.outerHTML='<div class=sk-text>ALX</div>'" />
+        <span>Alteryx</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/googlebigquery/4285F4" alt="BQ Analytics" onerror="this.style.display='none'" />
+        <span>BQ Analytics</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cloud & Infrastructure -->
+  <div class="skill-cat">
+    <div class="skill-cat-label">Cloud &amp; Infrastructure</div>
+    <div class="skill-grid">
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/googlecloud/4285F4" alt="GCP" onerror="this.style.display='none'" />
+        <span>GCP</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/microsoftazure/0078D4" alt="Azure" onerror="this.style.display='none'" />
+        <span>Azure Data Factory</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/snowflake/29B5E8" alt="Snowflake" onerror="this.style.display='none'" />
+        <span>Snowflake</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/awslambda/FF9900" alt="Serverless" onerror="this.style.display='none'" />
+        <span>Serverless</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/githubactions/2088FF" alt="CI/CD" onerror="this.style.display='none'" />
+        <span>CI/CD</span>
+      </div>
+      <div class="sk">
+        <img src="https://cdn.simpleicons.org/vault/FFEC6E" alt="Secrets" onerror="this.outerHTML='<div class=sk-text>🔐</div>'" />
+        <span>Secrets Mgmt</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile -->
+  <div class="profile-box">
+    <div class="sec-label">Profile</div>
+    <p>"I build the systems that turn data into decisions — from pipeline to dashboard to production AI agent. If you need someone who can architect it, code it, and ship it, I am ready to talk."</p>
+  </div>
+
+</aside>
+
+</div><!-- /cv -->
+
+<script>
+  function toggle(card) {
+    const wasOpen = card.classList.contains('open');
+    document.querySelectorAll('.job-card.open').forEach(c => c.classList.remove('open'));
+    if (!wasOpen) card.classList.add('open');
+  }
+</script>
+</body>
+</html>

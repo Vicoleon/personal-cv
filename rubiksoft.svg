@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Purple rounded background -->
+  <rect width="100" height="100" rx="20" fill="#6432B4"/>
+  <!-- Isometric cube — all white, right face has purple inset -->
+  <!-- Top face -->
+  <polygon points="50,20 77,34 50,48 23,34" fill="white"/>
+  <!-- Left face -->
+  <polygon points="23,34 50,48 50,78 23,64" fill="white"/>
+  <!-- Right face (full white first, then inset on top) -->
+  <polygon points="77,34 50,48 50,78 77,64" fill="white"/>
+  <!-- Purple square inset on right face — bottom-left portion -->
+  <polygon points="63,55 77,48 77,64 63,71" fill="#6432B4"/>
+</svg>
