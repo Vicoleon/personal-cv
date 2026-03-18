@@ -11,18 +11,18 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #0E0E11;
-      --sidebar:  #0B0B0E;
-      --card:     #141417;
-      --card-hov: #18181C;
-      --border:   #232329;
-      --blue:     #7C72F5;
-      --blue-bg:  rgba(124,114,245,0.08);
-      --teal:     #34C9A8;
-      --teal-bg:  rgba(52,201,168,0.08);
-      --text:     #F0EFF6;
-      --text2:    #9490AA;
-      --text3:    #55525F;
+      --bg:       #F8FBFC;
+      --sidebar:  #E5EAEF;
+      --card:     #F0F4F8;
+      --card-hov: #E8EDF3;
+      --border:   #E2E8F0;
+      --blue:     #2D6A6A;
+      --blue-bg:  rgba(45,106,106,0.07);
+      --teal:     #3A8C8C;
+      --teal-bg:  rgba(58,140,140,0.07);
+      --text:     #1A2530;
+      --text2:    #4A5568;
+      --text3:    #94A3B8;
       --serif:    'DM Serif Display', Georgia, serif;
       --sans:     'Inter', system-ui, sans-serif;
     }
@@ -150,9 +150,9 @@
       text-transform: uppercase;
       color: var(--blue);
       padding: 3px 10px;
-      border: 1px solid rgba(77,141,244,0.28);
+      border: 1px solid rgba(45,106,106,0.30);
       border-radius: 20px;
-      background: rgba(77,141,244,0.07);
+      background: rgba(45,106,106,0.07);
       white-space: nowrap;
     }
 
@@ -230,10 +230,11 @@
       margin-bottom: 12px;
       overflow: hidden;
       cursor: pointer;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 4px rgba(26,37,48,0.06);
     }
     .job-card:last-child { margin-bottom: 0; }
-    .job-card:hover { border-color: var(--blue); }
+    .job-card:hover { border-color: var(--blue); box-shadow: 0 2px 8px rgba(45,106,106,0.12); }
 
     .job-header {
       padding: 13px 14px;
@@ -246,10 +247,11 @@
       width: 34px; height: 34px;
       border-radius: 7px;
       background: #fff;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
       overflow: hidden;
+      box-shadow: 0 1px 3px rgba(26,37,48,0.06);
     }
     .co-badge img { width: 24px; height: 24px; object-fit: contain; }
     .co-badge .b-init {
@@ -316,6 +318,7 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 13px;
+      box-shadow: 0 1px 3px rgba(26,37,48,0.05);
     }
     .skill-cat-label {
       font-size: 0.61rem;
@@ -340,11 +343,12 @@
       padding: 9px 4px 7px;
       border-radius: 7px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
+      background: #fff;
       transition: border-color 0.2s, background 0.2s;
       cursor: default;
+      box-shadow: 0 1px 2px rgba(26,37,48,0.04);
     }
-    .sk:hover { border-color: rgba(77,141,244,0.4); background: var(--blue-bg); }
+    .sk:hover { border-color: rgba(45,106,106,0.40); background: var(--blue-bg); }
     .sk img { width: 22px; height: 22px; object-fit: contain; }
     .sk span {
       font-size: 0.6rem;
@@ -363,8 +367,8 @@
 
     /* Profile */
     .profile-box {
-      background: linear-gradient(135deg, #121116 0%, #171520 100%);
-      border: 1px solid rgba(124,114,245,0.18);
+      background: linear-gradient(135deg, #EBF2F2 0%, #E0EDED 100%);
+      border: 1px solid rgba(45,106,106,0.20);
       border-radius: 10px;
       padding: 15px;
     }
@@ -768,7 +772,7 @@
     <div class="skill-cat-label">Data &amp; AI</div>
     <div class="skill-grid">
       <div class="sk">
-        <img src="https://cdn.simpleicons.org/openai/ffffff" alt="AI Agents" onerror="this.style.display='none'" />
+        <img src="https://cdn.simpleicons.org/openai/1A2530" alt="AI Agents" onerror="this.style.display='none'" />
         <span>AI Agents</span>
       </div>
       <div class="sk">
