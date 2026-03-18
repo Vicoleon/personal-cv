@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" fill="#2A7A4B"/>
+  <!-- Clapperboard shape — film/entertainment payroll -->
+  <!-- Board body -->
+  <rect x="18" y="38" width="64" height="44" rx="5" fill="white"/>
+  <!-- Clapper top -->
+  <rect x="18" y="26" width="64" height="14" rx="4" fill="white"/>
+  <!-- Clapper stripes -->
+  <rect x="18" y="26" width="14" height="14" rx="0" fill="#2A7A4B"/>
+  <rect x="42" y="26" width="14" height="14" rx="0" fill="#2A7A4B"/>
+  <rect x="66" y="26" width="16" height="14" rx="0" fill="#2A7A4B"/>
+  <!-- GS text on board -->
+  <text x="50" y="72" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="26" fill="#2A7A4B">GS</text>
+</svg>

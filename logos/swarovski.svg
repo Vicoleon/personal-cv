@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" fill="white"/>
+  <!-- Swarovski swan silhouette — simplified geometric swan -->
+  <g transform="translate(50,52) scale(1.1)">
+    <!-- Body -->
+    <ellipse cx="2" cy="8" rx="16" ry="9" fill="#1A1A1A"/>
+    <!-- Neck curve -->
+    <path d="M-4,-2 Q-16,-18 -10,-28 Q-5,-34 0,-30 Q-4,-22 -2,-10 Z" fill="#1A1A1A"/>
+    <!-- Head -->
+    <ellipse cx="-8" cy="-30" rx="5" ry="4" fill="#1A1A1A"/>
+    <!-- Beak -->
+    <path d="M-12,-29 L-20,-28 L-12,-27 Z" fill="#1A1A1A"/>
+    <!-- Wing highlight -->
+    <path d="M6,2 Q18,-4 16,6 Q10,10 2,14" stroke="white" stroke-width="1.5" fill="none"/>
+  </g>
+</svg>
