@@ -35,7 +35,8 @@
   nav ul{display:flex;gap:28px;list-style:none}
   nav a{font-size:14px;letter-spacing:.02em;color:var(--ink);position:relative}
   nav a:hover{color:var(--muted)}
-  .lang{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .lang{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--rule);padding:8px 14px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .2s}
+  .lang:hover{color:var(--ink);border-color:var(--ink)}
 
   /* Hero */
   .hero{padding:80px 0 60px;border-bottom:1px solid var(--rule)}
@@ -133,37 +134,37 @@
 </head>
 <body>
 
-<div class="annc">Now booking Q2 2026 engagements — AI agents, BI architecture &amp; data platform builds.</div>
+<div class="annc" data-i18n="annc">Now booking Q2 2026 engagements — AI agents, BI architecture &amp; data platform builds.</div>
 
 <header class="site">
   <div class="wrap nav">
     <a href="https://rubik-soft.com" target="_blank" class="brand">rubiksoft<small>Jose Leon Salgado</small></a>
     <nav>
       <ul>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#approach">Approach</a></li>
-        <li><a href="#skills">Capabilities</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#work" data-i18n="nav.work">Work</a></li>
+        <li><a href="#approach" data-i18n="nav.approach">Approach</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Capabilities</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         <li><a href="https://rubik-soft.com" target="_blank">rubik-soft.com ↗</a></li>
       </ul>
     </nav>
-    <div class="lang">EN</div>
+    <button id="langToggle" class="lang" type="button" aria-label="Switch language">EN</button>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <h1>
+      <h1 data-i18n="hero.h1" data-i18n-html="1">
         BCG, Walmart, Experian, Swarovski, Latchel, Greenslate.
         <span class="small">Twelve years of data work<br/>that earned its place.</span>
       </h1>
-      <div class="meta">Data &amp; AI Engineer · BI Architect · San José, Costa Rica</div>
+      <div class="meta" data-i18n="hero.meta">Data &amp; AI Engineer · BI Architect · San José, Costa Rica</div>
     </div>
     <div class="hero-image" style="background:none">
       <img src="img/hero.png" alt="Jose Leon Salgado" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0" />
-      <div class="credit">Jose Leon Salgado — Founder, RubikSoft</div>
+      <div class="credit" data-i18n="hero.credit">Jose Leon Salgado — Founder, RubikSoft</div>
     </div>
   </div>
 </section>
@@ -171,30 +172,30 @@
 <section class="prose">
   <div class="wrap prose-grid">
     <div>
-      <p class="lede">You can hire anyone with a dbt certificate and an opinion about Snowflake. Or you can hire someone with a decade of real pipelines, real stakeholders and real production systems behind them.</p>
-      <p>Not theory. Not tutorials repackaged into a portfolio. Twelve years of work produced under pressure for clients and organisations that expected the numbers to be right and the system to keep running. <em>That is the difference. And it runs through everything built here.</em></p>
-      <p>ELT pipelines and warehouses for Greenslate and Latchel. Global reporting for Swarovski. Org-wide automation analytics for Experian. A P&amp;L reporting suite for Walmart. AI-powered policy Q&amp;A for BCG. Production AI agents shipped under the RubikSoft banner.</p>
+      <p class="lede" data-i18n="prose.p1" data-i18n-html="1">You can hire anyone with a dbt certificate and an opinion about Snowflake. Or you can hire someone with a decade of real pipelines, real stakeholders and real production systems behind them.</p>
+      <p data-i18n="prose.p2" data-i18n-html="1">Not theory. Not tutorials repackaged into a portfolio. Twelve years of work produced under pressure for clients and organisations that expected the numbers to be right and the system to keep running. <em>That is the difference. And it runs through everything built here.</em></p>
+      <p data-i18n="prose.p3" data-i18n-html="1">ELT pipelines and warehouses for Greenslate and Latchel. Global reporting for Swarovski. Org-wide automation analytics for Experian. A P&amp;L reporting suite for Walmart. AI-powered policy Q&amp;A for BCG. Production AI agents shipped under the RubikSoft banner.</p>
     </div>
     <div>
-      <p><em>I didn't build a course. I built a career as an engineer.</em></p>
-      <p>Twelve-plus years turning raw data into decision systems — from ingestion to dashboard to deployed AI agent. The work spans ETL/ELT, data warehousing, BI architecture, NLP and the new generation of agentic systems. The throughline is simple: <strong>ship things that hold up when the business depends on them.</strong></p>
-      <p>This page is not a résumé. It is a short statement of how I work, who I have worked for, and what I am ready to build next.</p>
+      <p data-i18n="prose.p4" data-i18n-html="1"><em>I didn't build a course. I built a career as an engineer.</em></p>
+      <p data-i18n="prose.p5" data-i18n-html="1">Twelve-plus years turning raw data into decision systems — from ingestion to dashboard to deployed AI agent. The work spans ETL/ELT, data warehousing, BI architecture, NLP and the new generation of agentic systems. The throughline is simple: <strong>ship things that hold up when the business depends on them.</strong></p>
+      <p data-i18n="prose.p6">This page is not a résumé. It is a short statement of how I work, who I have worked for, and what I am ready to build next.</p>
     </div>
   </div>
 </section>
 
 <section class="pull">
   <div class="wrap">
-    <h2>Most engineers learn to <em>query.</em> Very few learn to <em>architect.</em> That gap is where everything that matters lives.</h2>
+    <h2 data-i18n="pull.quote" data-i18n-html="1">Most engineers learn to <em>query.</em> Very few learn to <em>architect.</em> That gap is where everything that matters lives.</h2>
     <div class="by">— Jose Leon Salgado</div>
   </div>
 </section>
 
 <section class="section-title" id="work">
   <div class="wrap">
-    <div class="kicker">Selected Experience</div>
-    <h2>The work, in order.</h2>
-    <p>Founder, product manager, lead engineer and analyst across fintech, retail, insurance, luxury and consulting — twelve years of production systems, not slide decks.</p>
+    <div class="kicker" data-i18n="work.kicker">Selected Experience</div>
+    <h2 data-i18n="work.title">The work, in order.</h2>
+    <p data-i18n="work.sub">Founder, product manager, lead engineer and analyst across fintech, retail, insurance, luxury and consulting — twelve years of production systems, not slide decks.</p>
   </div>
 </section>
 
@@ -202,26 +203,26 @@
   <div class="wrap">
 
     <div class="era">
-      <div class="era-years">2025<br/>Present</div>
+      <div class="era-years" data-i18n="era.present" data-i18n-html="1">2025<br/>Present</div>
       <div>
         <div class="role">
           <h3>RubikSoft</h3>
-          <div class="org">Founder &amp; Principal · Jan 2025 — Present</div>
+          <div class="org" data-i18n="role.rubiksoft.org">Founder &amp; Principal · Jan 2025 — Present</div>
           <ul>
-            <li>Designed and launched production-ready AI agents for data maintenance and automation at scale.</li>
-            <li>Built the full agent infrastructure: admin tooling, monitoring and deployment pipelines.</li>
-            <li>Architected ELT pipelines covering ingestion, transformation and system-update flows.</li>
-            <li>Delivered end-to-end solutions across lead qualification, AI orchestration and process automation.</li>
+            <li data-i18n="role.rubiksoft.b1">Designed and launched production-ready AI agents for data maintenance and automation at scale.</li>
+            <li data-i18n="role.rubiksoft.b2">Built the full agent infrastructure: admin tooling, monitoring and deployment pipelines.</li>
+            <li data-i18n="role.rubiksoft.b3">Architected ELT pipelines covering ingestion, transformation and system-update flows.</li>
+            <li data-i18n="role.rubiksoft.b4">Delivered end-to-end solutions across lead qualification, AI orchestration and process automation.</li>
           </ul>
         </div>
         <div class="role">
           <h3>BCG</h3>
-          <div class="org">Product Manager — AskBCG / Findability · Sep 2025 — Jan 2026</div>
+          <div class="org" data-i18n="role.bcg.org">Product Manager — AskBCG / Findability · Sep 2025 — Jan 2026</div>
           <ul>
-            <li>Drove the launch of an AI-powered policy Q&amp;A tool to preserve and surface institutional knowledge.</li>
-            <li>Defined the North Star KPI system and measurement framework for the product.</li>
-            <li>Established OKRs to align stakeholders and drive adoption across practice areas.</li>
-            <li>Built a human-in-the-loop validation model for quality assurance on generated answers.</li>
+            <li data-i18n="role.bcg.b1">Drove the launch of an AI-powered policy Q&amp;A tool to preserve and surface institutional knowledge.</li>
+            <li data-i18n="role.bcg.b2">Defined the North Star KPI system and measurement framework for the product.</li>
+            <li data-i18n="role.bcg.b3">Established OKRs to align stakeholders and drive adoption across practice areas.</li>
+            <li data-i18n="role.bcg.b4">Built a human-in-the-loop validation model for quality assurance on generated answers.</li>
           </ul>
         </div>
       </div>
@@ -232,21 +233,21 @@
       <div>
         <div class="role">
           <h3>Greenslate</h3>
-          <div class="org">ETL &amp; Analytics Designer II · Feb 2024 — Aug 2025</div>
+          <div class="org" data-i18n="role.greenslate.org">ETL &amp; Analytics Designer II · Feb 2024 — Aug 2025</div>
           <ul>
-            <li>Designed and built robust ELT systems for financial and payroll data streams.</li>
-            <li>Engineered API integrations connecting third-party platforms with internal pipelines.</li>
-            <li>Redesigned pipeline architecture — improved reliability and reduced processing time.</li>
+            <li data-i18n="role.greenslate.b1">Designed and built robust ELT systems for financial and payroll data streams.</li>
+            <li data-i18n="role.greenslate.b2">Engineered API integrations connecting third-party platforms with internal pipelines.</li>
+            <li data-i18n="role.greenslate.b3">Redesigned pipeline architecture — improved reliability and reduced processing time.</li>
           </ul>
         </div>
         <div class="role">
           <h3>Latchel Inc</h3>
-          <div class="org">Operations BI Lead · Jan 2022 — Present</div>
+          <div class="org" data-i18n="role.latchel.org">Operations BI Lead · Jan 2022 — Present</div>
           <ul>
-            <li>Built the entire analytics infrastructure from scratch — ingestion through to dashboards.</li>
-            <li>Developed a full reporting layer covering operations, finance and customer success.</li>
-            <li>Built a PDF reader AI agent to automate document processing and extraction.</li>
-            <li>Implemented NLP sentiment analysis to surface customer insights at scale.</li>
+            <li data-i18n="role.latchel.b1">Built the entire analytics infrastructure from scratch — ingestion through to dashboards.</li>
+            <li data-i18n="role.latchel.b2">Developed a full reporting layer covering operations, finance and customer success.</li>
+            <li data-i18n="role.latchel.b3">Built a PDF reader AI agent to automate document processing and extraction.</li>
+            <li data-i18n="role.latchel.b4">Implemented NLP sentiment analysis to surface customer insights at scale.</li>
           </ul>
         </div>
       </div>
@@ -257,18 +258,18 @@
       <div>
         <div class="role">
           <h3>Experian</h3>
-          <div class="org">Automation &amp; Data Analytics Lead · Oct 2021 — Jan 2022</div>
+          <div class="org" data-i18n="role.experian.org">Automation &amp; Data Analytics Lead · Oct 2021 — Jan 2022</div>
           <ul>
-            <li>Built org-wide analytics infrastructure, centralising automation analysis and reporting.</li>
-            <li>Defined the reporting and analytics roadmap, standardising data across business units.</li>
+            <li data-i18n="role.experian.b1">Built org-wide analytics infrastructure, centralising automation analysis and reporting.</li>
+            <li data-i18n="role.experian.b2">Defined the reporting and analytics roadmap, standardising data across business units.</li>
           </ul>
         </div>
         <div class="role">
           <h3>Swarovski</h3>
-          <div class="org">Global Data &amp; Reporting Analyst · Mar 2021 — Aug 2021</div>
+          <div class="org" data-i18n="role.swarovski.org">Global Data &amp; Reporting Analyst · Mar 2021 — Aug 2021</div>
           <ul>
-            <li>Automated 100% of performance analysis reporting, eliminating manual processes entirely.</li>
-            <li>Defined a global reporting and analytics roadmap for sales and operations teams.</li>
+            <li data-i18n="role.swarovski.b1">Automated 100% of performance analysis reporting, eliminating manual processes entirely.</li>
+            <li data-i18n="role.swarovski.b2">Defined a global reporting and analytics roadmap for sales and operations teams.</li>
           </ul>
         </div>
       </div>
@@ -279,13 +280,13 @@
       <div>
         <div class="role">
           <h3>Walmart</h3>
-          <div class="org">Digital Transformation Manager · May 2013 — Nov 2020</div>
+          <div class="org" data-i18n="role.walmart.org">Digital Transformation Manager · May 2013 — Nov 2020</div>
           <ul>
-            <li>Led full development of the company's P&amp;L reporting suite.</li>
-            <li>Spearheaded digital transformation initiatives across multiple departments.</li>
-            <li>Built and managed cross-functional teams to drive strategic execution.</li>
-            <li>Drove BI tool adoption for operational management and internal communications.</li>
-            <li>Led Six Sigma / Lean improvement projects — eliminated waste, improved throughput.</li>
+            <li data-i18n="role.walmart.b1">Led full development of the company's P&amp;L reporting suite.</li>
+            <li data-i18n="role.walmart.b2">Spearheaded digital transformation initiatives across multiple departments.</li>
+            <li data-i18n="role.walmart.b3">Built and managed cross-functional teams to drive strategic execution.</li>
+            <li data-i18n="role.walmart.b4">Drove BI tool adoption for operational management and internal communications.</li>
+            <li data-i18n="role.walmart.b5">Led Six Sigma / Lean improvement projects — eliminated waste, improved throughput.</li>
           </ul>
         </div>
       </div>
@@ -297,20 +298,20 @@
 <section class="pillars" id="approach">
   <div class="wrap">
     <div class="pillars-head">
-      <h2>You already have the <em>data.</em> What you need is the <em>system</em> to use it.</h2>
+      <h2 data-i18n="pillars.title" data-i18n-html="1">You already have the <em>data.</em> What you need is the <em>system</em> to use it.</h2>
     </div>
     <div class="pillars-grid">
       <div class="pillar">
-        <h4>01 · Architect</h4>
-        <p><strong>Start with the decision.</strong> Every pipeline, warehouse and model I build begins with the question the business is actually trying to answer. Architecture before tooling. Tooling before code.</p>
+        <h4 data-i18n="pillars.p1.h">01 · Architect</h4>
+        <p data-i18n="pillars.p1.b" data-i18n-html="1"><strong>Start with the decision.</strong> Every pipeline, warehouse and model I build begins with the question the business is actually trying to answer. Architecture before tooling. Tooling before code.</p>
       </div>
       <div class="pillar">
-        <h4>02 · Build</h4>
-        <p><strong>Ship to production.</strong> ELT systems, BI layers, AI agents — built to run unattended, observed properly and handed over with documentation that survives the engineer who wrote it.</p>
+        <h4 data-i18n="pillars.p2.h">02 · Build</h4>
+        <p data-i18n="pillars.p2.b" data-i18n-html="1"><strong>Ship to production.</strong> ELT systems, BI layers, AI agents — built to run unattended, observed properly and handed over with documentation that survives the engineer who wrote it.</p>
       </div>
       <div class="pillar">
-        <h4>03 · Operate</h4>
-        <p><strong>Stay close to the system.</strong> Monitoring, KPIs, human-in-the-loop validation and continuous iteration. The work doesn't end at deployment. It begins there.</p>
+        <h4 data-i18n="pillars.p3.h">03 · Operate</h4>
+        <p data-i18n="pillars.p3.b" data-i18n-html="1"><strong>Stay close to the system.</strong> Monitoring, KPIs, human-in-the-loop validation and continuous iteration. The work doesn't end at deployment. It begins there.</p>
       </div>
     </div>
   </div>
@@ -319,32 +320,32 @@
 <section class="skills" id="skills">
   <div class="wrap">
     <div class="section-title" style="padding:0">
-      <div class="kicker">Capabilities</div>
-      <h2>The toolkit, in full.</h2>
+      <div class="kicker" data-i18n="skills.kicker">Capabilities</div>
+      <h2 data-i18n="skills.title">The toolkit, in full.</h2>
     </div>
     <div class="skills-grid">
       <div class="skill-col">
-        <h4>Languages &amp; Databases</h4>
+        <h4 data-i18n="skills.c1">Languages &amp; Databases</h4>
         <ul>
           <li>Python</li><li>SQL</li><li>BigQuery</li><li>C#</li><li>MySQL</li><li>PL/SQL</li>
         </ul>
       </div>
       <div class="skill-col">
-        <h4>Data &amp; AI</h4>
+        <h4 data-i18n="skills.c2">Data &amp; AI</h4>
         <ul>
-          <li>AI Agents</li><li>Vector Stores · VDB</li><li>NLP</li><li>ML Deployment</li><li>n8n</li><li>ETL / ELT</li>
+          <li data-i18n="skills.c2.l1">AI Agents</li><li data-i18n="skills.c2.l2">Vector Stores · VDB</li><li>NLP</li><li data-i18n="skills.c2.l4">ML Deployment</li><li>n8n</li><li>ETL / ELT</li>
         </ul>
       </div>
       <div class="skill-col">
-        <h4>BI &amp; Analytics</h4>
+        <h4 data-i18n="skills.c3">BI &amp; Analytics</h4>
         <ul>
           <li>Power BI</li><li>Tableau</li><li>Looker Studio</li><li>Azure Synapse</li><li>Alteryx</li><li>BQ Analytics</li>
         </ul>
       </div>
       <div class="skill-col">
-        <h4>Cloud &amp; Infra</h4>
+        <h4 data-i18n="skills.c4">Cloud &amp; Infra</h4>
         <ul>
-          <li>GCP</li><li>Azure Data Factory</li><li>Snowflake</li><li>Serverless</li><li>CI / CD</li><li>Secrets Mgmt</li>
+          <li>GCP</li><li>Azure Data Factory</li><li>Snowflake</li><li data-i18n="skills.c4.l4">Serverless</li><li>CI / CD</li><li data-i18n="skills.c4.l6">Secrets Mgmt</li>
         </ul>
       </div>
     </div>
@@ -354,31 +355,31 @@
 <section class="meta-blocks" id="about">
   <div class="wrap meta-grid">
     <div class="meta-block">
-      <h4>Education</h4>
+      <h4 data-i18n="edu.h">Education</h4>
       <div class="item">
-        <h5>Software Engineering</h5>
-        <span>Universidad Técnica Nacional · Ongoing</span>
+        <h5 data-i18n="edu.i1.t">Software Engineering</h5>
+        <span data-i18n="edu.i1.s">Universidad Técnica Nacional · Ongoing</span>
       </div>
       <div class="item">
-        <h5>Conversational English — C1 / C2</h5>
+        <h5 data-i18n="edu.i2.t">Conversational English — C1 / C2</h5>
         <span>IPAI · 2001</span>
       </div>
       <div class="item">
-        <h5>High School Diploma</h5>
+        <h5 data-i18n="edu.i3.t">High School Diploma</h5>
         <span>Colegio Manuel Benavides R. · 1998</span>
       </div>
     </div>
     <div class="meta-block">
-      <h4>Languages</h4>
-      <div class="lang-row"><span>English</span><span>C2</span></div>
-      <div class="lang-row"><span>Spanish</span><span>Native</span></div>
-      <div class="lang-row"><span>Portuguese</span><span>B2</span></div>
+      <h4 data-i18n="lang.h">Languages</h4>
+      <div class="lang-row"><span data-i18n="lang.en">English</span><span>C2</span></div>
+      <div class="lang-row"><span data-i18n="lang.es">Spanish</span><span data-i18n="lang.native">Native</span></div>
+      <div class="lang-row"><span data-i18n="lang.pt">Portuguese</span><span>B2</span></div>
     </div>
     <div class="meta-block">
-      <h4>Based in</h4>
+      <h4 data-i18n="based.h">Based in</h4>
       <div class="item">
         <h5>San José, Costa Rica</h5>
-        <span>Available worldwide · remote-first</span>
+        <span data-i18n="based.i1.s">Available worldwide · remote-first</span>
       </div>
       <div class="item">
         <h5>+506 7075-2247</h5>
@@ -390,16 +391,16 @@
 
 <section class="cta" id="contact">
   <div class="wrap">
-    <h2>Your next data system <em>begins here.</em></h2>
-    <p>I build the systems that turn data into decisions — from pipeline to dashboard to production AI agent. If you need someone who can architect it, code it and ship it, I am ready to talk.</p>
-    <a class="btn" href="mailto:joseleonsalgado@gmail.com">Start a conversation</a>
-    <a class="btn ghost" href="https://rubik-soft.com" target="_blank">Visit RubikSoft ↗</a>
+    <h2 data-i18n="cta.h" data-i18n-html="1">Your next data system <em>begins here.</em></h2>
+    <p data-i18n="cta.p">I build the systems that turn data into decisions — from pipeline to dashboard to production AI agent. If you need someone who can architect it, code it and ship it, I am ready to talk.</p>
+    <a class="btn" href="mailto:joseleonsalgado@gmail.com" data-i18n="cta.btn">Start a conversation</a>
+    <a class="btn ghost" href="https://rubik-soft.com" target="_blank" data-i18n="cta.btn2">Visit RubikSoft ↗</a>
   </div>
 </section>
 
 <footer>
   <div class="wrap row">
-    <div>© 2026 Jose Leon Salgado — RubikSoft. All rights reserved.</div>
+    <div data-i18n="footer.rights">© 2026 Jose Leon Salgado — RubikSoft. All rights reserved.</div>
     <div>
       <a href="mailto:joseleonsalgado@gmail.com">joseleonsalgado@gmail.com</a>
       &nbsp;·&nbsp;
@@ -407,6 +408,136 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  const dict = {
+    es: {
+      "annc": "Reservando proyectos Q2 2026 — agentes de IA, arquitectura BI y plataformas de datos.",
+      "nav.work": "Trayectoria",
+      "nav.approach": "Enfoque",
+      "nav.skills": "Capacidades",
+      "nav.about": "Sobre mí",
+      "nav.contact": "Contacto",
+      "hero.h1": 'BCG, Walmart, Experian, Swarovski, Latchel, Greenslate.<span class="small">Doce años de trabajo en datos<br/>que se ganaron su lugar.</span>',
+      "hero.meta": "Ingeniero de Datos e IA · Arquitecto BI · San José, Costa Rica",
+      "hero.credit": "Jose Leon Salgado — Fundador, RubikSoft",
+      "prose.p1": "Puedes contratar a cualquiera con un certificado de dbt y una opinión sobre Snowflake. O puedes contratar a alguien con una década de pipelines reales, stakeholders reales y sistemas de producción reales a sus espaldas.",
+      "prose.p2": "Sin teoría. Sin tutoriales reempaquetados en un portafolio. Doce años de trabajo bajo presión, para clientes y organizaciones que esperaban que los números fueran correctos y los sistemas siguieran corriendo. <em>Esa es la diferencia. Y atraviesa todo lo que se construye aquí.</em>",
+      "prose.p3": "Pipelines ELT y data warehouses para Greenslate y Latchel. Reportería global para Swarovski. Analítica de automatización a nivel organización para Experian. Un sistema de P&amp;L para Walmart. Q&amp;A de políticas con IA para BCG. Agentes de IA en producción bajo la marca RubikSoft.",
+      "prose.p4": "<em>No construí un curso. Construí una carrera como ingeniero.</em>",
+      "prose.p5": "Más de doce años convirtiendo datos crudos en sistemas de decisión — desde la ingesta hasta el dashboard hasta el agente de IA desplegado. El trabajo abarca ETL/ELT, data warehousing, arquitectura BI, NLP y la nueva generación de sistemas agénticos. La premisa es simple: <strong>entregar cosas que aguanten cuando el negocio depende de ellas.</strong>",
+      "prose.p6": "Esta página no es un currículum. Es una declaración breve de cómo trabajo, para quién he trabajado, y qué estoy listo para construir a continuación.",
+      "pull.quote": "La mayoría de los ingenieros aprende a <em>consultar.</em> Muy pocos aprenden a <em>arquitectar.</em> En esa brecha vive todo lo que importa.",
+      "work.kicker": "Experiencia Seleccionada",
+      "work.title": "El trabajo, en orden.",
+      "work.sub": "Fundador, product manager, ingeniero líder y analista en fintech, retail, seguros, lujo y consultoría — doce años de sistemas en producción, no de slides.",
+      "era.present": "2025<br/>Presente",
+      "role.rubiksoft.org": "Fundador y Principal · Ene 2025 — Presente",
+      "role.rubiksoft.b1": "Diseñé y lancé agentes de IA listos para producción para mantenimiento y automatización de datos a escala.",
+      "role.rubiksoft.b2": "Construí toda la infraestructura del agente: herramientas de administración, monitoreo y pipelines de despliegue.",
+      "role.rubiksoft.b3": "Arquitecté pipelines ELT que cubren ingesta, transformación y actualización de sistemas.",
+      "role.rubiksoft.b4": "Entregué soluciones de punta a punta: calificación de leads, orquestación de IA y automatización de procesos.",
+      "role.bcg.org": "Product Manager — AskBCG / Findability · Sep 2025 — Ene 2026",
+      "role.bcg.b1": "Lideré el lanzamiento de una herramienta de Q&amp;A de políticas con IA para preservar y exponer el conocimiento institucional.",
+      "role.bcg.b2": "Definí el sistema de KPI North Star y el marco de medición del producto.",
+      "role.bcg.b3": "Establecí OKRs para alinear stakeholders e impulsar la adopción en distintas áreas de práctica.",
+      "role.bcg.b4": "Construí un modelo de validación human-in-the-loop para asegurar la calidad de las respuestas generadas.",
+      "role.greenslate.org": "Diseñador ETL y Analítica II · Feb 2024 — Ago 2025",
+      "role.greenslate.b1": "Diseñé y construí sistemas ELT robustos para flujos de datos financieros y de nómina.",
+      "role.greenslate.b2": "Construí integraciones de API conectando plataformas de terceros con pipelines internos.",
+      "role.greenslate.b3": "Rediseñé la arquitectura del pipeline — mejoré la confiabilidad y reduje los tiempos de procesamiento.",
+      "role.latchel.org": "Líder de BI de Operaciones · Ene 2022 — Presente",
+      "role.latchel.b1": "Construí toda la infraestructura analítica desde cero — desde la ingesta hasta los dashboards.",
+      "role.latchel.b2": "Desarrollé una capa de reportería completa cubriendo operaciones, finanzas y customer success.",
+      "role.latchel.b3": "Construí un agente de IA lector de PDFs para automatizar el procesamiento y extracción de documentos.",
+      "role.latchel.b4": "Implementé análisis de sentimiento con NLP para revelar insights de clientes a escala.",
+      "role.experian.org": "Líder de Automatización y Analítica de Datos · Oct 2021 — Ene 2022",
+      "role.experian.b1": "Construí infraestructura analítica a nivel organización, centralizando análisis de automatización y reportería.",
+      "role.experian.b2": "Definí la hoja de ruta de reportería y analítica, estandarizando datos entre unidades de negocio.",
+      "role.swarovski.org": "Analista Global de Datos y Reportería · Mar 2021 — Ago 2021",
+      "role.swarovski.b1": "Automaticé el 100% de la reportería de análisis de desempeño, eliminando por completo los procesos manuales.",
+      "role.swarovski.b2": "Definí una hoja de ruta global de reportería y analítica para los equipos de ventas y operaciones.",
+      "role.walmart.org": "Gerente de Transformación Digital · May 2013 — Nov 2020",
+      "role.walmart.b1": "Lideré el desarrollo completo de la suite de reportería P&amp;L de la compañía.",
+      "role.walmart.b2": "Encabecé iniciativas de transformación digital en múltiples departamentos.",
+      "role.walmart.b3": "Formé y gestioné equipos multifuncionales para impulsar la ejecución estratégica.",
+      "role.walmart.b4": "Impulsé la adopción de herramientas BI para gestión operativa y comunicaciones internas.",
+      "role.walmart.b5": "Lideré proyectos de mejora Six Sigma / Lean — eliminé desperdicios, mejoré el throughput.",
+      "pillars.title": "Ya tienes los <em>datos.</em> Lo que necesitas es el <em>sistema</em> para usarlos.",
+      "pillars.p1.h": "01 · Arquitectar",
+      "pillars.p1.b": "<strong>Empezar por la decisión.</strong> Cada pipeline, warehouse y modelo que construyo empieza con la pregunta que el negocio está realmente tratando de responder. Arquitectura antes que herramientas. Herramientas antes que código.",
+      "pillars.p2.h": "02 · Construir",
+      "pillars.p2.b": "<strong>Llevar a producción.</strong> Sistemas ELT, capas BI, agentes de IA — construidos para correr sin supervisión, observados correctamente y entregados con documentación que sobrevive al ingeniero que la escribió.",
+      "pillars.p3.h": "03 · Operar",
+      "pillars.p3.b": "<strong>Mantenerse cerca del sistema.</strong> Monitoreo, KPIs, validación human-in-the-loop e iteración continua. El trabajo no termina al desplegar. Empieza ahí.",
+      "skills.kicker": "Capacidades",
+      "skills.title": "El kit de herramientas, completo.",
+      "skills.c1": "Lenguajes y Bases de Datos",
+      "skills.c2": "Datos e IA",
+      "skills.c2.l1": "Agentes de IA",
+      "skills.c2.l2": "Vector Stores · VDB",
+      "skills.c2.l4": "Despliegue de ML",
+      "skills.c3": "BI y Analítica",
+      "skills.c4": "Nube e Infraestructura",
+      "skills.c4.l4": "Serverless",
+      "skills.c4.l6": "Gestión de Secretos",
+      "edu.h": "Educación",
+      "edu.i1.t": "Ingeniería de Software",
+      "edu.i1.s": "Universidad Técnica Nacional · En curso",
+      "edu.i2.t": "Inglés Conversacional — C1 / C2",
+      "edu.i3.t": "Bachillerato",
+      "lang.h": "Idiomas",
+      "lang.en": "Inglés",
+      "lang.es": "Español",
+      "lang.pt": "Portugués",
+      "lang.native": "Nativo",
+      "based.h": "Ubicación",
+      "based.i1.s": "Disponible mundialmente · remote-first",
+      "cta.h": "Tu próximo sistema de datos <em>empieza aquí.</em>",
+      "cta.p": "Construyo los sistemas que convierten datos en decisiones — desde el pipeline hasta el dashboard hasta el agente de IA en producción. Si necesitas a alguien que pueda arquitectarlo, programarlo y desplegarlo, estoy listo para conversar.",
+      "cta.btn": "Iniciar una conversación",
+      "cta.btn2": "Visitar RubikSoft ↗",
+      "footer.rights": "© 2026 Jose Leon Salgado — RubikSoft. Todos los derechos reservados."
+    }
+  };
+
+  // Cache English originals on first load so toggling back is exact.
+  const en = {};
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    en[el.getAttribute('data-i18n')] = el.innerHTML;
+  });
+  dict.en = en;
+
+  function apply(lang){
+    const map = dict[lang] || dict.en;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(map[key] !== undefined){
+        el.innerHTML = map[key];
+      } else if(lang === 'en' && en[key] !== undefined){
+        el.innerHTML = en[key];
+      }
+    });
+    document.documentElement.lang = lang;
+    document.title = lang === 'es'
+      ? 'Ingeniería de Datos e IA por Jose Leon Salgado | rubiksoft'
+      : 'Data & AI Engineering by Jose Leon Salgado | rubiksoft';
+    const btn = document.getElementById('langToggle');
+    if(btn) btn.textContent = lang === 'es' ? 'ES' : 'EN';
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+
+  const saved = (function(){ try{return localStorage.getItem('lang');}catch(e){return null;} })();
+  const browserLang = (navigator.language || 'en').toLowerCase().startsWith('es') ? 'es' : 'en';
+  apply(saved || browserLang);
+
+  document.getElementById('langToggle').addEventListener('click', () => {
+    const current = document.documentElement.lang === 'es' ? 'es' : 'en';
+    apply(current === 'es' ? 'en' : 'es');
+  });
+})();
+</script>
 
 </body>
 </html>
