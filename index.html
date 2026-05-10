@@ -183,6 +183,85 @@
   @keyframes slideDown{from{transform:translateY(-100%)}to{transform:translateY(0)}}
   @keyframes settle{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
   @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.06) translate(-1%, -1%)}}
+
+  /* ───── Hero overlay quote ───── */
+  .hero-overlay{
+    position:absolute;left:24px;right:24px;bottom:56px;
+    font-family:"Libre Caslon Display",serif;
+    font-size:20px;line-height:1.4;color:#f6f3ee;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 35%, rgba(0,0,0,.78) 100%);
+    padding:80px 22px 22px;
+    border-left:2px solid #f6f3ee;
+    backdrop-filter:blur(2px);
+    -webkit-backdrop-filter:blur(2px);
+    z-index:2;
+    transform:translateY(40px);opacity:0;
+  }
+  .loaded .hero-overlay{animation:flyInUp 1.1s cubic-bezier(.2,.7,.2,1) 1.1s forwards}
+  .hero-image .credit{z-index:3}
+  @media (max-width:900px){
+    .hero-overlay{font-size:16px;padding:60px 18px 18px;bottom:44px}
+  }
+
+  /* ───── AI Chatbot ───── */
+  .chat-fab{
+    position:fixed;right:28px;bottom:28px;z-index:90;
+    width:auto;padding:14px 22px;background:var(--ink);color:var(--bg);
+    border:none;border-radius:999px;cursor:pointer;
+    font-family:"DM Sans",sans-serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+    transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s ease;
+  }
+  .chat-fab:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(0,0,0,.22)}
+  .chat-fab .dot{width:8px;height:8px;background:#9bd28e;border-radius:50%;box-shadow:0 0 0 0 rgba(155,210,142,.7);animation:pulse 2s infinite}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(155,210,142,.7)}
+    70%{box-shadow:0 0 0 10px rgba(155,210,142,0)}
+    100%{box-shadow:0 0 0 0 rgba(155,210,142,0)}
+  }
+
+  .chat-drawer{
+    position:fixed;right:28px;bottom:88px;z-index:91;
+    width:380px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 120px);
+    background:var(--bg);border:1px solid var(--rule);
+    box-shadow:0 30px 80px rgba(0,0,0,.22);
+    display:none;flex-direction:column;
+    transform:translateY(20px) scale(.98);opacity:0;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .35s ease;
+  }
+  .chat-drawer.show{display:flex;transform:translateY(0) scale(1);opacity:1}
+  .chat-head{padding:18px 20px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;background:var(--paper)}
+  .chat-head .title{font-family:"Libre Caslon Display",serif;font-size:18px;line-height:1.2}
+  .chat-head .title small{display:block;font-family:"DM Sans",sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:2px;font-weight:400}
+  .chat-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1;padding:4px 8px;font-family:"DM Sans",sans-serif}
+  .chat-close:hover{color:var(--ink)}
+  .chat-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px;background:var(--bg)}
+  .chat-msg{font-size:14px;line-height:1.55;padding:12px 14px;max-width:88%;border-radius:2px}
+  .chat-msg.assistant{background:var(--paper);color:var(--ink);align-self:flex-start;border-left:2px solid var(--ink)}
+  .chat-msg.user{background:var(--ink);color:var(--bg);align-self:flex-end}
+  .chat-msg strong{font-weight:500}
+  .chat-msg em{font-style:italic}
+  .chat-greet{font-family:"Libre Caslon Display",serif;font-size:18px;line-height:1.35;color:var(--ink);padding:6px 4px 14px;border-bottom:1px dashed var(--rule);margin-bottom:6px}
+  .chat-greet em{color:var(--muted)}
+  .chat-suggestions{display:flex;flex-wrap:wrap;gap:6px;padding:0 4px 4px}
+  .chat-suggest{font-size:11px;letter-spacing:.08em;padding:7px 11px;background:transparent;border:1px solid var(--rule);color:var(--ink);cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .2s}
+  .chat-suggest:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .chat-foot{border-top:1px solid var(--rule);padding:12px;display:flex;gap:8px;background:var(--paper)}
+  .chat-input{flex:1;border:1px solid var(--rule);background:var(--bg);padding:10px 12px;font-family:"DM Sans",sans-serif;font-size:14px;color:var(--ink);resize:none;min-height:40px;max-height:120px;line-height:1.4;outline:none}
+  .chat-input:focus{border-color:var(--ink)}
+  .chat-send{padding:0 18px;background:var(--ink);color:var(--bg);border:none;font-family:"DM Sans",sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:opacity .2s}
+  .chat-send:disabled{opacity:.4;cursor:not-allowed}
+  .typing-indicator{align-self:flex-start;display:flex;gap:4px;padding:14px;background:var(--paper);border-left:2px solid var(--ink)}
+  .typing-indicator span{width:6px;height:6px;background:var(--muted);border-radius:50%;animation:typing 1.2s infinite ease-in-out}
+  .typing-indicator span:nth-child(2){animation-delay:.2s}
+  .typing-indicator span:nth-child(3){animation-delay:.4s}
+  @keyframes typing{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+
+  @media (max-width:480px){
+    .chat-drawer{right:12px;left:12px;width:auto;bottom:80px;height:70vh}
+    .chat-fab{right:16px;bottom:16px}
+  }
 </style>
 </head>
 <body>
@@ -217,6 +296,7 @@
     </div>
     <div class="hero-image" style="background:none">
       <img src="img/hero.png" alt="Jose Leon Salgado" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0" />
+      <div class="hero-overlay" data-i18n="prose.p6">This page is not a résumé. It is a short statement of how I work, who I have worked for, and what I am ready to build next.</div>
       <div class="credit" data-i18n="hero.credit">Jose Leon Salgado — Founder, RubikSoft</div>
     </div>
   </div>
@@ -232,7 +312,6 @@
     <div class="reveal-right">
       <p data-i18n="prose.p4" data-i18n-html="1"><em>I didn't build a course. I built a career as an engineer.</em></p>
       <p data-i18n="prose.p5" data-i18n-html="1">Twelve-plus years turning raw data into decision systems — from ingestion to dashboard to deployed AI agent. The work spans ETL/ELT, data warehousing, BI architecture, NLP and the new generation of agentic systems. The throughline is simple: <strong>ship things that hold up when the business depends on them.</strong></p>
-      <p data-i18n="prose.p6">This page is not a résumé. It is a short statement of how I work, who I have worked for, and what I am ready to build next.</p>
     </div>
   </div>
 </section>
@@ -575,14 +654,24 @@
       "cta.p": "Construyo los sistemas que convierten datos en decisiones — desde el pipeline hasta el dashboard hasta el agente de IA en producción. Si necesitas a alguien que pueda arquitectarlo, programarlo y desplegarlo, estoy listo para conversar.",
       "cta.btn": "Iniciar una conversación",
       "cta.btn2": "Visitar RubikSoft ↗",
-      "footer.rights": "© 2026 Jose Leon Salgado — RubikSoft. Todos los derechos reservados."
+      "footer.rights": "© 2026 Jose Leon Salgado — RubikSoft. Todos los derechos reservados.",
+      "chat.fab": "Preguntar sobre Jose",
+      "chat.sub": "Entrenado con el CV · Pregunta lo que quieras",
+      "chat.greet": "Hola — soy el <em>asistente de IA</em> de Jose. Pregúntame sobre su experiencia, o si encaja en algún rol que estés buscando.",
+      "chat.s1": "¿Encaja Jose en un rol de Sr. Data Engineer?",
+      "chat.s2": "¿Qué agentes de IA ha lanzado?",
+      "chat.s3": "Resúmeme su experiencia en BI.",
+      "chat.placeholder": "Escribe tu pregunta…",
+      "chat.send": "Enviar"
     }
   };
 
   // Cache English originals on first load so toggling back is exact.
   const en = {};
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    en[el.getAttribute('data-i18n')] = el.innerHTML;
+    const attr = el.getAttribute('data-i18n-attr');
+    const key = el.getAttribute('data-i18n');
+    en[key] = attr ? el.getAttribute(attr) : el.innerHTML;
   });
   dict.en = en;
 
@@ -590,11 +679,13 @@
     const map = dict[lang] || dict.en;
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if(map[key] !== undefined){
-        el.innerHTML = map[key];
-      } else if(lang === 'en' && en[key] !== undefined){
-        el.innerHTML = en[key];
-      }
+      const attr = el.getAttribute('data-i18n-attr');
+      let value;
+      if(map[key] !== undefined) value = map[key];
+      else if(lang === 'en' && en[key] !== undefined) value = en[key];
+      if(value === undefined) return;
+      if(attr){ el.setAttribute(attr, value); }
+      else { el.innerHTML = value; }
     });
     document.documentElement.lang = lang;
     document.title = lang === 'es'
@@ -612,6 +703,238 @@
   document.getElementById('langToggle').addEventListener('click', () => {
     const current = document.documentElement.lang === 'es' ? 'es' : 'en';
     apply(current === 'es' ? 'en' : 'es');
+  });
+})();
+</script>
+
+<!-- ───── AI Chatbot ───── -->
+<button class="chat-fab" id="chatFab" type="button" aria-label="Chat with Jose's AI assistant">
+  <span class="dot"></span>
+  <span data-i18n="chat.fab">Ask about Jose</span>
+</button>
+
+<div class="chat-drawer" id="chatDrawer" role="dialog" aria-label="AI assistant">
+  <div class="chat-head">
+    <div class="title">
+      Jose's AI Assistant
+      <small data-i18n="chat.sub">Trained on the CV · Ask anything</small>
+    </div>
+    <button class="chat-close" id="chatClose" type="button" aria-label="Close">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-greet" data-i18n="chat.greet" data-i18n-html="1">
+      Hi — I'm Jose's <em>AI assistant.</em> Ask me about his experience, or whether he is a fit for a role you are hiring for.
+    </div>
+    <div class="chat-suggestions" id="chatSuggestions">
+      <button type="button" class="chat-suggest" data-q-key="chat.s1" data-i18n="chat.s1">Is Jose a fit for a Sr. Data Engineer role?</button>
+      <button type="button" class="chat-suggest" data-q-key="chat.s2" data-i18n="chat.s2">What AI agent work has he shipped?</button>
+      <button type="button" class="chat-suggest" data-q-key="chat.s3" data-i18n="chat.s3">Summarize his BI experience.</button>
+    </div>
+  </div>
+  <div class="chat-foot">
+    <textarea id="chatInput" class="chat-input" rows="1" data-i18n="chat.placeholder" data-i18n-attr="placeholder" placeholder="Type your question…"></textarea>
+    <button class="chat-send" id="chatSend" type="button" data-i18n="chat.send">Send</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const fab = document.getElementById('chatFab');
+  const drawer = document.getElementById('chatDrawer');
+  const closeBtn = document.getElementById('chatClose');
+  const input = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('chatSend');
+  const messages = document.getElementById('chatMessages');
+  const suggestionsEl = document.getElementById('chatSuggestions');
+
+  const PROXY_URL = 'https://gemini-cv-proxy-hqfdhwhhga-uc.a.run.app/chat';
+
+  const CV_CONTEXT = `
+Jose Leon Salgado — Data & AI Engineer | BI Architect
+San José, Costa Rica | joseleonsalgado@gmail.com | (506) 7075-2247
+Company: RubikSoft (rubik-soft.com)
+
+SUMMARY:
+12+ years turning raw data into decision systems. From ELT pipelines and data warehouses to production AI agents deployed at BCG, Latchel, Experian, Swarovski, and Walmart.
+
+EXPERIENCE:
+
+1. RubikSoft — Founder & Principal (Jan 2025 – Present)
+- Designed and launched production-ready AI agents for data maintenance and automation at scale.
+- Built the full agent infrastructure including admin tooling, monitoring, and deployment pipelines.
+- Architected ELT pipelines covering ingestion, transformation, and system update flows.
+- Delivered end-to-end solutions: lead qualification, AI orchestration, and process automation.
+
+2. BCG — Product Manager, AskBCG / Findability (Sep 2025 – Jan 2026)
+- Drove the launch of an AI-powered policy Q&A tool to preserve and surface institutional knowledge.
+- Defined the North Star KPI system and measurement framework for the product.
+- Established OKRs to align stakeholders and drive adoption across practice areas.
+- Built a human-in-the-loop validation model for quality assurance on generated answers.
+- Drove office and cohort personalisation rules to improve content relevance.
+
+3. Greenslate — ETL & Analytics Designer II (Feb 2024 – Aug 2025)
+- Designed and built robust ELT systems for financial and payroll data streams.
+- Engineered API integrations to connect third-party platforms with internal pipelines.
+- Redesigned pipeline architecture, improving reliability and reducing processing time.
+
+4. Latchel Inc — Operations BI Lead (Jan 2022 – Present)
+- Built the entire analytics infrastructure from scratch — ingestion to dashboards.
+- Developed a full reporting layer covering operations, finance, and customer success.
+- Built a PDF reader AI agent to automate document processing and extraction.
+- Implemented NLP sentiment analysis to surface customer insights at scale.
+
+5. Experian — Automation & Data Analytics Lead (Oct 2021 – Jan 2022)
+- Built org-wide analytics infrastructure, centralising automation analysis and reporting.
+- Defined the reporting and analytics roadmap, standardising data across business units.
+
+6. Swarovski — Global Data & Reporting Analyst (Mar 2021 – Aug 2021)
+- Automated 100% of performance analysis reporting, eliminating all manual processes.
+- Defined a global reporting and analytics roadmap for sales and operations teams.
+
+7. Walmart — Digital Transformation Manager (May 2013 – Nov 2020)
+- Led full development of the company's P&L reporting suite.
+- Spearheaded digital transformation initiatives across multiple departments.
+- Built and managed cross-functional teams to drive strategic execution.
+- Drove adoption of BI tools for operational management and communications.
+- Led Six Sigma / Lean improvement projects, eliminating waste and improving throughput.
+
+TECHNICAL SKILLS:
+- Languages & Databases: Python, SQL, BigQuery, C#, MySQL, PL/SQL
+- Data & AI: AI Agents, Vector Stores, NLP, ML Deploy, n8n, ETL/ELT
+- BI & Analytics: Power BI, Tableau, Looker Studio, Azure Synapse, Alteryx, BQ Analytics
+- Cloud & Infrastructure: GCP, Azure Data Factory, Snowflake, Serverless, CI/CD, Secrets Mgmt
+
+LANGUAGES: English (C2), Spanish (Native), Portuguese (B2)
+
+EDUCATION:
+- Software Engineering — Universidad Técnica Nacional (Ongoing)
+- Conversational English C1/C2 — IPAI (2001)
+- High School Diploma — Colegio Manuel Benavides R. (1998)
+
+PROFILE QUOTE:
+"I build the systems that turn data into decisions — from pipeline to dashboard to production AI agent. If you need someone who can architect it, code it, and ship it, I am ready to talk." — Jose
+`;
+
+  const SYSTEM_PROMPT = `You are the Expert AI Assistant for Jose Leon Salgado.
+Your mission is to represent Jose professionally and persuasively to potential employers and clients.
+
+RESUME CONTEXT:
+${CV_CONTEXT}
+
+MISSION RULES:
+1. RESPONSE STYLE: Be elite, persuasive, and professional. Act as Jose's advocate.
+2. CONCISENESS: When asked if Jose is a match for a role, give a punchy, high-level summary with 2-3 key relevant achievements. Do not write essays.
+3. COMPLETENESS: Always finish your thought. Do not stop mid-sentence.
+4. SOURCE CONTROL: Use ONLY the provided resume context. If a fact is not in the context, say so honestly.
+5. FORMATTING: Use **bold** for emphasis and bullet points for lists where appropriate.
+6. LANGUAGE: Respond in the SAME language the user wrote in (English or Spanish).
+7. CONSTRAINTS: Politely decline questions unrelated to Jose's career.`;
+
+  let chatHistory = [];
+  let isOpen = false;
+
+  function openChat(){
+    drawer.classList.add('show');
+    isOpen = true;
+    setTimeout(() => input.focus(), 350);
+  }
+  function closeChat(){
+    drawer.classList.remove('show');
+    isOpen = false;
+  }
+
+  fab.addEventListener('click', () => isOpen ? closeChat() : openChat());
+  closeBtn.addEventListener('click', closeChat);
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && isOpen) closeChat();
+  });
+
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function formatMarkdown(text){
+    let html = escapeHtml(text);
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/(^|[\s\(])\*([^\s*][^*]*?)\*(?=[\s\.,!?\)]|$)/g, '$1<em>$2</em>');
+    html = html.replace(/^[-•]\s+(.+)$/gm, '• $1');
+    html = html.replace(/\n/g, '<br/>');
+    return html;
+  }
+  function addMessage(role, text){
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + role;
+    div.innerHTML = role === 'assistant' ? formatMarkdown(text) : escapeHtml(text);
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+    return div;
+  }
+  function showTyping(){
+    const div = document.createElement('div');
+    div.className = 'typing-indicator';
+    div.id = 'typingIndicator';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+  function removeTyping(){
+    const t = document.getElementById('typingIndicator');
+    if(t) t.remove();
+  }
+
+  async function sendMessage(text){
+    const msg = (text != null ? text : input.value).trim();
+    if(!msg) return;
+    input.value = '';
+    input.style.height = '';
+    addMessage('user', msg);
+    if(suggestionsEl) suggestionsEl.remove();
+    chatHistory.push({ role: 'user', parts: [{ text: msg }] });
+    sendBtn.disabled = true;
+    showTyping();
+
+    try{
+      const res = await fetch(PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+          contents: chatHistory,
+          generationConfig: { temperature: 0.4, maxOutputTokens: 8192 }
+        })
+      });
+      const data = await res.json();
+      const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text
+        || (document.documentElement.lang === 'es'
+            ? "Disculpa, no pude procesar eso. ¿Puedes intentarlo de nuevo?"
+            : "Sorry, I couldn't process that. Please try again.");
+      chatHistory.push({ role: 'model', parts: [{ text: reply }] });
+      removeTyping();
+      addMessage('assistant', reply);
+    } catch(err){
+      removeTyping();
+      addMessage('assistant', document.documentElement.lang === 'es'
+        ? "Hubo un error de conexión. Intenta de nuevo en un momento."
+        : "Connection error. Please try again in a moment.");
+    }
+    sendBtn.disabled = false;
+    input.focus();
+  }
+
+  sendBtn.addEventListener('click', () => sendMessage());
+  input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' && !e.shiftKey){
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+  });
+
+  // Suggestion chips → send the localized text currently rendered.
+  document.querySelectorAll('.chat-suggest').forEach(btn => {
+    btn.addEventListener('click', () => sendMessage(btn.textContent.trim()));
   });
 })();
 </script>
